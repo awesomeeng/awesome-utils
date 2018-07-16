@@ -2,20 +2,23 @@
     "name": "AwesomeUtils",
     "version": "1.0.0",
     "author": "the awesome engineering company",
-    "license": "(c) 2018, The Awesome Engineering Company, inc",
-    "contributors": [{
-        "name": "Glen R. Goodwin"
-    }],
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Glen R. Goodwin"
+        }
+    ],
+    "main": "./src/AwesomeUtils.js",
     "engines": {
         "node": ">=10.5.0"
     },
     "dependencies": {
         "colors": "*",
-        "lodash": "^4.17.10"
+        "lodash": "^4.17.10",
+        "moment": "^2.22.2"
     },
     "devDependencies": {
         "mocha": "*"
     },
-    "optionalDependencies": {
-    }
+    "optionalDependencies": {}
 }
