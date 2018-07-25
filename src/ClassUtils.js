@@ -3,7 +3,6 @@
 "use strict";
 
 class ClassUtils {
-
 }
 
 module.exports = new ClassUtils();
