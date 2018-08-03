@@ -5,14 +5,17 @@
 const FS = require("fs");
 
 class FSUtils {
-	exists(path,callback) {
-		try {
-			FS.statSync(path);
-			callback(true);
-		}
-		catch (ex) {
-			callback(false);
-		}
+	exists(path) {
+		return new Promise((resolve,reject)=>{
+			try {
+				FS.stat(path,(err,stats)=>{
+					resolve(!err && stats);
+				});
+			}
+			catch (ex) {
+				return reject(ex);
+			}
+		});
 	}
 
 	existsSync(path) {
