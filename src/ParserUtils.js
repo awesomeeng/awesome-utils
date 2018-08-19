@@ -106,7 +106,7 @@ class AbstractParser {
 	}
 
 	pop(length=1) {
-		if (this.position+length>this.content.length) this.error("Unexpectedly reached end of content.");
+		if (this.position+length>this.content.length) return undefined;
 		this.position += length;
 		return this.content.slice(this.position-length,this.position);
 	}
