@@ -3,6 +3,9 @@
 "use strict";
 
 class ClassUtils {
+	isClass(c) {
+		return /^class/.test(c.toString());
+	}
 }
 
 module.exports = new ClassUtils();
