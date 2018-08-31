@@ -22,6 +22,32 @@ describe("ObjectUtils",function(){
 		}
 	};
 
+	it("isPlainObject",function(){
+		assert.equal(ObjectUtils.isPlainObject(undefined),false);
+		assert.equal(ObjectUtils.isPlainObject(null),false);
+		assert.equal(ObjectUtils.isPlainObject(true),false);
+		assert.equal(ObjectUtils.isPlainObject(false),false);
+		assert.equal(ObjectUtils.isPlainObject(""),false);
+		assert.equal(ObjectUtils.isPlainObject("asdf"),false);
+		assert.equal(ObjectUtils.isPlainObject(0),false);
+		assert.equal(ObjectUtils.isPlainObject(123),false);
+		assert.equal(ObjectUtils.isPlainObject(123.45),false);
+		assert.equal(ObjectUtils.isPlainObject(()=>{}),false);
+		assert.equal(ObjectUtils.isPlainObject(/asdf/),false);
+		assert.equal(ObjectUtils.isPlainObject(new Date()),false);
+		assert.equal(ObjectUtils.isPlainObject([1,2,3]),false);
+		assert.equal(ObjectUtils.isPlainObject({}),true);
+		assert.equal(ObjectUtils.isPlainObject({
+			one: 1,
+			two: 2
+		}),true);
+		assert.equal(ObjectUtils.isPlainObject(Object.create(null)),true);
+		assert.equal(ObjectUtils.isPlainObject(Object.create({})),false);
+		assert.equal(ObjectUtils.isPlainObject(new Object()),true);
+	});
+
+
+
 	it("extend",function(){
 		let extended = ObjectUtils.extend({},base,{
 			two: {

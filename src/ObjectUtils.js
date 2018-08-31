@@ -3,6 +3,12 @@
 "use strict";
 
 class ObjectUtils {
+	isPlainObject(obj) {
+		if (obj===undefined || obj===null) return false;
+		if (typeof obj!=="object") return false;
+		return Object.getPrototypeOf(obj)===Object.prototype || Object.getPrototypeOf(obj)===null;
+	}
+
 	extend(target,...sources) {
 		if (target===undefined || target===null) target = {};
 		sources.forEach((source)=>{
