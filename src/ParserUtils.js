@@ -144,6 +144,6 @@ class AbstractParser {
 		let lines = this.content.slice(0,pos).split(/\r\n|\n|\r|\v|\f/g);
 		let line = lines.length;
 		let offset = pos-lines.slice(0,-1).join(" ").length;
-		throw new Error("Error at line "+line+" position "+offset+": "+message);
+		throw new Error("Error at line "+line+" position "+(offset-1)+": "+message);
 	}
 }
