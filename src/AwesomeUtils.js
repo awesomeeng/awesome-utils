@@ -4,6 +4,7 @@ module.exports = {
 	FS: require("./FSUtils.js"),
 	Module: require("./ModuleUtils.js"),
 	Net: require("./NetUtils.js"),
+	Object: require("./ObjectUtils.js"),
 	Parser: require("./ParserUtils.js"),
 	Promise: require("./PromiseUtils.js"),
 	Random: require("./RandomUtils.js")
