@@ -13,7 +13,7 @@ class ObjectUtils {
 		if (target===undefined || target===null) target = {};
 		sources.forEach((source)=>{
 			Object.assign(target,source);
-			Object.keys(source).forEach((key)=>{
+			source!==undefined && source!==null && Object.keys(source).forEach((key)=>{
 				if (typeof source[key]==="object") {
 					this.extend(target[key],source[key]);
 				}
