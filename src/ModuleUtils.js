@@ -4,6 +4,8 @@
 
 const Path = require("path");
 
+const ANONYMOUS_RE = /\(<anonymous>\)/;
+
 /**
  * Utilities for working with modules, or understanding the code itself.
  */
@@ -82,19 +84,24 @@ class ModuleUtils {
 	 *
 	 * @return {[string]}
 	 */
-	source(depth=0) {
+	source(depth=0,removeAnonymous=false) {
 		try {
 			throw new Error("AwesomeUtils.Module.line() call, ignore this error.");
 		}
 		catch (ex) {
 			let stack = ex.stack.split(/\n/g).slice(2);
+			if (removeAnonymous) {
+				stack = stack.filter((line)=>{
+					return !line.match(ANONYMOUS_RE);
+				});
+			}
 
 			depth = Math.min(stack.length-1,Math.max(0,depth));
 			while (depth>0) {
 				depth -= 1;
 				stack.shift();
 			}
-			return stack[0].replace(/^.*\((.*):\d+:.*$/,"$1");
+			return stack[0].match(ANONYMOUS_RE) && "anonymous" || stack[0].replace(/^.*\((.*):\d+:.*$/,"$1");
 		}
 	}
 
