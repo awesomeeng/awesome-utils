@@ -2,8 +2,6 @@
 
 "use strict";
 
-const Moment = require("moment");
-
 class DateUtils {
 	get SECOND() {
 		return 1000;
@@ -35,30 +33,6 @@ class DateUtils {
 		}
 		if (date instanceof Date) return date;
 		throw new Error("Unknown date format.");
-	}
-
-	duration(s) {
-		if (!s) return 0;
-		if (typeof s==="number") return Math.floor(s);
-
-		s = s.replace(/\s?years?|\s?yrs?/g,"Y");
-		s = s.replace(/\s?months?|\s?mos?/g,"M");
-		s = s.replace(/\s?days?|\s?dys?/g,"D");
-		s = s.replace(/\s?hours?|\s?hrs?/g,"H");
-		s = s.replace(/\s?minutes?|\s?mins?/g,"X");
-		s = s.replace(/\s?seconds?|\s?secs?/g,"S");
-
-		if (s.startsWith("P")) s = s.slice(1);
-		if (s.indexOf("T")<0) {
-			let match = s.match(/\d+H|\d+X|\d+S/);
-			if (match) s = s.slice(0,match.index)+"T"+s.slice(match.index);
-		}
-		s = s.replace(/X/,"M");
-		s = s.replace(/\s+|,/g,"");
-		if (!s.startsWith("P")) s = "P"+s;
-		s = s.toUpperCase();
-
-		return Moment.duration(s).asMilliseconds();
 	}
 }
 
