@@ -13,12 +13,8 @@
         "node": ">=10.5.0"
     },
     "dependencies": {
-        "colors": "*",
-        "lodash": "^4.17.10",
         "moment": "^2.22.2"
     },
-    "devDependencies": {
-        "mocha": "*"
-    },
+    "devDependencies": {},
     "optionalDependencies": {}
 }

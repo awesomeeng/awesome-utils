@@ -30,7 +30,8 @@ class DateUtils {
 		if (typeof date==="number") return new Date(date);
 		if (typeof date==="string") {
 			if (date.match(/^\d+$/)) return new Date(parseInt(date));
-			return new Date(+Moment(date));
+			let d = new Date(date);
+			if (d.toString()!=="Invalid Date") return d;
 		}
 		if (date instanceof Date) return date;
 		throw new Error("Unknown date format.");
