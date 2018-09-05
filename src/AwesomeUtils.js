@@ -1,4 +1,5 @@
 module.exports = {
+	ANSI: require("./ANSIUtils.js"),
 	Array: require("./ArrayUtils.js"),
 	Class: require("./ClassUtils.js"),
 	Date: require("./DateUtils.js"),
