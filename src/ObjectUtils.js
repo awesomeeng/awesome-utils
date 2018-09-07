@@ -12,12 +12,24 @@ class ObjectUtils {
 	extend(target,...sources) {
 		if (target===undefined || target===null) target = {};
 		sources.forEach((source)=>{
-			Object.assign(target,source);
-			source!==undefined && source!==null && Object.keys(source).forEach((key)=>{
-				if (typeof source[key]==="object") {
-					this.extend(target[key],source[key]);
-				}
-			});
+			if (source===undefined || source===null) return;
+			if (source instanceof Array || this.isPlainObject(source)) {
+				Object.keys(source).forEach((key)=>{
+					let src = source[key];
+					if (src instanceof Array || this.isPlainObject(src)) {
+						let tgt = target[key];
+						if (src instanceof Array) tgt = tgt instanceof Array ? tgt : [];
+						else tgt = this.isPlainObject(tgt) ? tgt : {};
+						target[key] = this.extend(tgt,src);
+					}
+					else {
+						target[key] = src;
+					}
+				});
+			}
+			else {
+				target = source;
+			}
 		});
 		return target;
 	}

@@ -142,8 +142,7 @@ describe("ObjectUtils",function(){
 
 		ObjectUtils.delete(obj,"one.two.three");
 		ObjectUtils.delete(obj,"two/three",false,"/");
-		assert(obj.one);
-		assert(!(obj.one.two && !obj.one.two.three));
+		assert(!obj.one);
 		assert(obj.two);
 		assert(!obj.two.three);
 	});
