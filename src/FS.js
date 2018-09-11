@@ -164,8 +164,8 @@ class FSUtils {
 	 * This removes the given path and everything it contains.  IT IS HIGHLY
 	 * DESTRUCTIVE AND SHOULD BE USED WITH CARE.
 	 *
-	 * @param  {[type]} path [description]
-	 * @return {[type]}      [description]
+	 * @param  {string} path
+	 * @return {void}      
 	 */
 	recursiveRmdirSync(path) {
 		if (!path) throw new Error("Missing path.");

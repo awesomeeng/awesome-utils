@@ -82,7 +82,7 @@ class ModuleUtils {
 	 *
 	 * @param {number} depth
 	 *
-	 * @return {[string]}
+	 * @return {string}
 	 */
 	source(depth=0,removeAnonymous=false) {
 		try {
@@ -116,7 +116,7 @@ class ModuleUtils {
 	 *
 	 * @param {number} depth
 	 *
-	 * @return {[string]}
+	 * @return {string}
 	 */
 	sourceAndLine(depth=0) {
 		try {

@@ -13,6 +13,12 @@
         "node": ">=10.5.0"
     },
     "dependencies": {},
-    "devDependencies": {},
-    "optionalDependencies": {}
+    "devDependencies": {
+        "jsdoc-to-markdown": "*",
+        "mocha": "*"
+    },
+    "optionalDependencies": {},
+    "scripts": {
+        "docs": "jsdoc2md src/** --separators > docs/API.md"
+    }
 }
