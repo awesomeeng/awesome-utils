@@ -46,8 +46,6 @@ describe("ObjectUtils",function(){
 		assert.equal(ObjectUtils.isPlainObject(new Object()),true);
 	});
 
-
-
 	it("extend",function(){
 		let extended = ObjectUtils.extend({},base,{
 			two: {
@@ -146,7 +144,4 @@ describe("ObjectUtils",function(){
 		assert(obj.two);
 		assert(!obj.two.three);
 	});
-
-
-
 });
