@@ -5,7 +5,7 @@
 const FS = require("fs");
 const Path = require("path");
 
-const ArrayUtils = require("./ArrayUtils");
+const ArrayUtils = require("./Array");
 
 class FSUtils {
 	exists(path) {

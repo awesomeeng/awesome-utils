@@ -284,7 +284,7 @@ class ANSIUtils {
 		if (style==="brightmagenta") return this.fgBrightMagenta;
 		if (style==="brightcyan") return this.fgBrightCyan;
 		if (style==="brightwhite") return this.fgBrightWhite;
-		return reset;
+		return this.reset;
 	}
 }
 

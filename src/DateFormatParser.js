@@ -2,7 +2,7 @@
 
 "use strict";
 
-const ParserUtils = require("./ParserUtils");
+const Parser = require("./Parser");
 
 const DOW = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const DOW3 = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -10,7 +10,7 @@ const DOW2 = ["Su","Mo","Tu","We","Th","Fr","Sa"];
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const MONTHS3 = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-class DateFormatParser extends ParserUtils.AbstractParser {
+class DateFormatParser extends Parser.AbstractParser {
 	parse(date,format) {
 		super.parse(format);
 
@@ -22,7 +22,7 @@ class DateFormatParser extends ParserUtils.AbstractParser {
 		let quoting = null;
 		while (this.pos<this.content.length) {
 			let next = this.peek();
-			
+
 			if (!quoting && (next==="'" || next==="\"")) {
 				quoting = this.pop();
 			}

@@ -94,8 +94,8 @@ class DateUtils {
 	 * `HOUR`, and `DAY`. See also `floorSecond()`, `floorMinute()`, `floorHour()`,
 	 * and `floorDay()` below.
 	 *
-	 * @param  {(Date|number|string}
-	 * @param  {Number}  
+	 * @param  {Date|number|string}
+	 * @param  {Number}
 	 * @return {Date}
 	 */
 	floor(date,to=0) {
@@ -113,7 +113,7 @@ class DateUtils {
 	/**
 	 * Floor the given date to the nearest second.
 	 *
-	 * @param  {(Date|number|string}
+	 * @param  {Date|number|string}
 	 * @return {Date}
 	 */
 	floorSeconds(date) {
@@ -123,7 +123,7 @@ class DateUtils {
 	/**
 	* Floor the given date to the nearest minute.
 	*
-	* @param  {(Date|number|string}
+	* @param  {Date|number|string}
 	* @return {Date}
 	*/
 	floorMinutes(date) {
@@ -133,7 +133,7 @@ class DateUtils {
 	/**
 	* Floor the given date to the nearest hour.
 	*
-	* @param  {(Date|number|string}
+	* @param  {Date|number|string}
 	* @return {Date}
 	*/
 	floorHours(date) {
@@ -143,7 +143,7 @@ class DateUtils {
 	/**
 	* Floor the given date to the nearest day.
 	*
-	* @param  {(Date|number|string}
+	* @param  {Date|number|string}
 	* @return {Date}
 	*/
 	floorDays(date) {
@@ -158,7 +158,7 @@ class DateUtils {
  	 *
  	 * Basically, it does its best to retunr a Date Object or an exception.
  	 *
-	 * @param  {(Date|number|string}
+	 * @param  {Date|number|string}
 	 * @return {Date}
 	 */
 	from(date) {
@@ -176,7 +176,7 @@ class DateUtils {
 	/**
 	 * Given some date, compute what day of the year it is.
 	 *
-	 * @param  {(Date|number|string}
+	 * @param  {Date|number|string}
 	 * @return {number}
 	 */
 	computeDayOfYear(date) {
@@ -235,7 +235,7 @@ class DateUtils {
 	 * | X       | unix timestamp (seconds)                 | -14182916                                       |
 	 * | x       | unix timestamp (milliseconds)            | -14182916000                                    |
 	 *
-	 * @param  {(Date|number|string}
+	 * @param  {Date|number|string}
 	 * @param  {string} pattern
 	 * @return {string}
 	 */

@@ -1,13 +1,13 @@
 module.exports = {
-	ANSI: require("./ANSIUtils.js"),
-	Array: require("./ArrayUtils.js"),
-	Class: require("./ClassUtils.js"),
-	Date: require("./DateUtils.js"),
-	FS: require("./FSUtils.js"),
-	Module: require("./ModuleUtils.js"),
-	Net: require("./NetUtils.js"),
-	Object: require("./ObjectUtils.js"),
-	Parser: require("./ParserUtils.js"),
-	Promise: require("./PromiseUtils.js"),
-	Random: require("./RandomUtils.js")
+	ANSI: require("./ANSI.js"),
+	Array: require("./Array.js"),
+	Class: require("./Class.js"),
+	Date: require("./Date.js"),
+	FS: require("./FS.js"),
+	Module: require("./Module.js"),
+	Net: require("./Net.js"),
+	Object: require("./Object.js"),
+	Parser: require("./Parser.js"),
+	Promise: require("./Promise.js"),
+	Random: require("./Random.js")
 };
