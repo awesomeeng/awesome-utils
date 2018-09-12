@@ -4,7 +4,7 @@ Javascript Utility functions for Enterprise Ready nodejs applications
 
 ## Disclaimer
 
-These are utilities largerly for use within the suite of applications for The Awesome Engineering Company. You are free to use it for your own purposes (MIT License), but keep in mind that we are only supporting it in relation to needs of our other applications.
+These are utilities largerly for use within the suite of applications for The Awesome Engineering Company. You are free to use it for your own purposes (MIT License), but keep in mind that we are only supporting it in relation to needs of our other applications. Thanks!
 
 ## Installation
 
