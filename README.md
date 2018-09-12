@@ -9,7 +9,7 @@ These are utilities largerly for use within the suite of applications for The Aw
 ## Installation
 
 ```
-	npm install @AwesomeEng/AwesomeUtils
+npm install @AwesomeEng/AwesomeUtils
 ```
 
 ## Usage
@@ -17,13 +17,11 @@ These are utilities largerly for use within the suite of applications for The Aw
 Require it, then make calls against it. See below for documentation.
 
 ```
-	const AwesomeUtils = require("AwesomeUtils");
+const AwesomeUtils = require("AwesomeUtils");
 
-	...
-
-	await AwesumeUtils.Promise.sleep(1000); // sleeps for 1 second.
-
-	...
+...
+await AwesumeUtils.Promise.sleep(1000); // sleeps for 1 second.
+...
 ```
 
 ## Documentation

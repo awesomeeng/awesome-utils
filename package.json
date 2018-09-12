@@ -1,24 +1,45 @@
 {
-    "name": "AwesomeUtils",
-    "version": "1.0.0",
-    "author": "the awesome engineering company",
-    "license": "MIT",
-    "contributors": [
-        {
-            "name": "Glen R. Goodwin"
-        }
-    ],
-    "main": "./src/AwesomeUtils.js",
-    "engines": {
-        "node": ">=10.5.0"
-    },
-    "dependencies": {},
-    "devDependencies": {
-        "jsdoc-to-markdown": "*",
-        "mocha": "*"
-    },
-    "optionalDependencies": {},
-    "scripts": {
-        "docs": "jsdoc2md src/** --separators > docs/API.md"
-    }
+  "name": "@awesomeeng/awesomeutils",
+  "version": "1.0.0",
+  "author": "the awesome engineering company",
+  "license": "MIT",
+  "contributors": [
+    "Glen R. Goodwin"
+  ],
+  "main": "./src/AwesomeUtils.js",
+  "engines": {
+    "node": ">=10.5.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jsdoc-to-markdown": "*",
+    "mocha": "*"
+  },
+  "optionalDependencies": {},
+  "scripts": {
+    "docs": "jsdoc2md src/** --separators > docs/API.md"
+  },
+  "description": "Javascript Utility functions for Enterprise Ready nodejs applications",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awesomeeng/AwesomeUtils.git"
+  },
+  "keywords": [
+    "awesome",
+    "awesomeeng",
+    "awesome",
+    "engineering",
+    "utilities",
+    "utility",
+    "utils",
+    "util"
+  ],
+  "bugs": {
+    "url": "https://github.com/awesomeeng/AwesomeUtils/issues"
+  },
+  "homepage": "https://github.com/awesomeeng/AwesomeUtils#readme"
 }
