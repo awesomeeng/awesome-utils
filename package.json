@@ -1,5 +1,5 @@
 {
-  "name": "@awesomeeng/awesomeutils",
+  "name": "@awesomeeng/awesome-utils",
   "version": "1.0.0",
   "author": "the awesome engineering company",
   "license": "MIT",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awesomeeng/AwesomeUtils.git"
+    "url": "git+https://github.com/awesomeeng/awesome-utils.git"
   },
   "keywords": [
     "awesome",
@@ -39,7 +39,7 @@
     "util"
   ],
   "bugs": {
-    "url": "https://github.com/awesomeeng/AwesomeUtils/issues"
+    "url": "https://github.com/awesomeeng/awesome-utils/issues"
   },
-  "homepage": "https://github.com/awesomeeng/AwesomeUtils#readme"
+  "homepage": "https://github.com/awesomeeng/awesome-utils#readme"
 }

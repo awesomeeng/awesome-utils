@@ -9,7 +9,7 @@ These are utilities largerly for use within the suite of applications for The Aw
 ## Installation
 
 ```
-npm install @AwesomeEng/AwesomeUtils
+npm install @awesomeeng/awesome-utils
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ npm install @AwesomeEng/AwesomeUtils
 Require it, then make calls against it. See below for documentation.
 
 ```
-const AwesomeUtils = require("AwesomeUtils");
+const AwesomeUtils = require("awesome-utils");
 
 ...
 await AwesumeUtils.Promise.sleep(1000); // sleeps for 1 second.
@@ -38,4 +38,4 @@ To learn more about The Awesome Engineering Company and our suite of products, v
 
 ## License
 
-AwesomeLog is released under the MIT License. Please read the  [LICENSE](https://raw.githubusercontent.com/awesomeeng/AwesomeLog/master/LICENSE?token=ABA2_wogpYds4a1qC_4aeUZd8C1in6Qcks5bUiQFwA%3D%3D) file for details.
+AwesomeLog is released under the MIT License. Please read the  [LICENSE](./LICENSE) file for details.
