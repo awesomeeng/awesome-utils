@@ -9,7 +9,7 @@ These are utilities largerly for use within the suite of applications for The Aw
 ## Installation
 
 ```
-npm install @awesomeeng/awesome-utils
+npm install --save @awesomeeng/awesome-utils
 ```
 
 ## Usage
