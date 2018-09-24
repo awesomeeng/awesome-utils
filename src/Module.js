@@ -4,7 +4,7 @@
 
 const Path = require("path");
 
-const ANONYMOUS_RE = /\(<anonymous>\)/;
+const STACK_PARSER = /^\s*(at)\s((.+)\s\(|)(.+)(:(\d+))(:(\d+))\)?$|^\s*(at)\s(.+)\s\((<anonymous>)\)?$/;
 
 /**
  * Utilities for working with modules, or understanding the code itself.
@@ -56,19 +56,10 @@ class ModuleUtils {
 	 * @return {number}
 	 */
 	line(depth=0) {
-		try {
-			throw new Error("AwesomeUtils.Module.line() call, ignore this error.");
-		}
-		catch (ex) {
-			let stack = ex.stack.split(/\n/g).slice(2);
+		depth = Math.min(999,Math.max(0,depth));
 
-			depth = Math.min(stack.length-1,Math.max(0,depth));
-			while (depth>0) {
-				depth -= 1;
-				stack.shift();
-			}
-			return stack[0].replace(/^.*:(\d+):\d+\)$/,"$1");
-		}
+		let stack = this.stack(depth,depth+1);
+		return stack[0].line;
 	}
 
 	/**
@@ -84,25 +75,11 @@ class ModuleUtils {
 	 *
 	 * @return {string}
 	 */
-	source(depth=0,removeAnonymous=false) {
-		try {
-			throw new Error("AwesomeUtils.Module.line() call, ignore this error.");
-		}
-		catch (ex) {
-			let stack = ex.stack.split(/\n/g).slice(2);
-			if (removeAnonymous) {
-				stack = stack.filter((line)=>{
-					return !line.match(ANONYMOUS_RE);
-				});
-			}
+	source(depth=0) {
+		depth = Math.min(999,Math.max(0,depth));
 
-			depth = Math.min(stack.length-1,Math.max(0,depth));
-			while (depth>0) {
-				depth -= 1;
-				stack.shift();
-			}
-			return stack[0].match(ANONYMOUS_RE) && "anonymous" || stack[0].replace(/^.*\((.*):\d+:.*$/,"$1");
-		}
+		let stack = this.stack(depth,depth+1);
+		return stack[0].source;
 	}
 
 	/**
@@ -119,19 +96,63 @@ class ModuleUtils {
 	 * @return {string}
 	 */
 	sourceAndLine(depth=0) {
-		try {
-			throw new Error("AwesomeUtils.Module.line() call, ignore this error.");
-		}
-		catch (ex) {
-			let stack = ex.stack.split(/\n/g).slice(2);
+		depth = Math.min(999,Math.max(0,depth));
 
-			depth = Math.min(stack.length-1,Math.max(0,depth));
-			while (depth>0) {
-				depth -= 1;
-				stack.shift();
-			}
-			return stack[0].replace(/^.*\((.*):(\d+):.*$/,"$1:$2");
-		}
+		let stack = this.stack(depth,depth+1);
+		return stack[0].source+":"+stack[0].line;
+	}
+
+	/**
+	 * Returns the currently running stack trace, as an array of objects (see below)
+	 * that describes where in the current execution stack the application
+	 * currently is.
+	 *
+	 * The returned array is comprised of stack entry objects which
+	 * have the following shape:
+	 *
+	 * ```
+	 * entry = {
+	 *   entry: string - the full stack trace entry string
+	 *   method: the method name from the stack trace entry
+	 *   source: the filename the method is in
+	 *   line: the line number the execution is on
+	 *   position: the line position the execution is on
+	 * }
+	 * ```
+	 *
+	 * @param  {Number} [start=0]
+	 * @param  {Number} [end=10]
+	 * @return {Array<Object>}
+	 */
+	stack(start=0,end=start+10) {
+		start = Math.min(999,Math.max(0,start));
+		end = Math.min(999,Math.max(0,end));
+
+		let saved = Error.stackTraceLimit;
+		if (start+end>=saved) Error.stackTraceLimit = start+end+1;
+
+		let obj = {};
+		Error.captureStackTrace(obj);
+		Error.stackTraceLimit = saved;
+		let stack = obj.stack.split(/\n/g).slice(1);
+
+		stack = stack.map((entry)=>{
+			entry = entry.trim();
+			let match = entry.match(STACK_PARSER);
+
+			return {
+				entry: entry,
+				method: match && match[3] || match && match[10] || "",
+				source: match && match[4] || match && match[11] || "",
+				line: match && match[6] && parseInt(match[6]) || 0,
+				position: match && match[8] && parseInt(match[8]) || 0
+			};
+		});
+
+		if (start>0) stack = stack.slice(start);
+		if (end>start) stack = stack.slice(0,end-start);
+
+		return stack;
 	}
 }
 
