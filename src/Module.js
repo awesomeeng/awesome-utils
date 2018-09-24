@@ -43,6 +43,40 @@ class ModuleUtils {
 	}
 
 	/**
+	 * Removes a module from the require cache, thus making it
+	 * reload again if required. Also, any children that
+	 * were loaded by the given module are also removed.
+	 *
+	 * Returns the total number of modules removed.
+	 *
+	 * You may optional indicate if the unrequire should remove
+	 * dependant children as well. This can have unwanted side-effects
+	 * so use with caution.
+	 *
+	 * @param  {module|string} mod
+	 * @param  {boolean} [removeChildren=false] removeChildren
+	 * @return {number}
+	 */
+	unrequire(mod,removeChildren=false) {
+		if (typeof mod!=="string" && mod.id) mod = mod.id;
+		if (typeof mod!=="string") throw new Error("module argument must be a module or a string.");
+
+		let count = 0;
+		let cached = require.cache[mod];
+		if (cached) {
+			if (removeChildren) {
+				(cached.children||[]).forEach((childmod)=>{
+					count += this.unrequire(childmod,removeChildren);
+				});
+			}
+			delete require.cache[mod];
+			count += 1;
+		}
+
+		return count;
+	}
+
+	/**
 	 * Returns the line number of the code of the line that called the line() function.
 	 * This works by throwing and catching an exception and then reading the stack
 	 * trace of the exception and finding the info it needs.
