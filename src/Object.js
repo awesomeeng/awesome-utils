@@ -59,6 +59,9 @@ class ObjectUtils {
 	 * @return {void}
 	 */
 	deepFreeze(obj) {
+		if (obj===undefined || obj===null) return;
+		if (typeof obj!=="object") return;
+
 		Object.freeze(obj);
 		Object.keys(obj).forEach((key)=>{
 			this.deepFreeze(obj[key]);
