@@ -2,13 +2,30 @@
 
 "use strict";
 
+/**
+ * Object utility functions.
+ */
 class ObjectUtils {
+	/**
+	 * Returns true oif the given object is a "plain" javascript object, meaning it
+	 * doesnt inherit from some other type of js object like an array, date, error, etc.
+	 *
+	 * @param  {Object}  obj
+	 * @return {Boolean}
+	 */
 	isPlainObject(obj) {
 		if (obj===undefined || obj===null) return false;
 		if (typeof obj!=="object") return false;
 		return Object.getPrototypeOf(obj)===Object.prototype || Object.getPrototypeOf(obj)===null;
 	}
 
+	/**
+	 * deep clone of each given source into the target.
+	 *
+	 * @param  {Object|null} target
+	 * @param  {Object} sources
+	 * @return {Object}
+	 */
 	extend(target,...sources) {
 		if (target===undefined || target===null) target = {};
 		sources.forEach((source)=>{
@@ -34,6 +51,29 @@ class ObjectUtils {
 		return target;
 	}
 
+	/**
+	 * Call Object.freeze() on the object and each property of the
+	 * object, essentially freezing the entire structure.
+	 *
+	 * @param  {Object} obj
+	 * @return {void}
+	 */
+	deepFreeze(obj) {
+		Object.freeze(obj);
+		Object.keys(obj).forEach((key)=>{
+			this.deepFreeze(obj[key]);
+		});
+	}
+
+	/**
+	 * Return an array of all possible paths for a given object.
+	 *
+	 * @param  {Object}  obj
+	 * @param  {string}  path
+	 * @param  {Boolean} [leafsOnly=false]
+	 * @param  {String}  [delimiter="."]
+	 * @return {Array<string>}
+	 */
 	paths(obj,path,leafsOnly=false,delimiter=".") {
 		if (obj===undefined || obj===null) return [];
 		if (typeof obj!=="object") return [];
@@ -59,6 +99,15 @@ class ObjectUtils {
 		return found;
 	}
 
+	/**
+	 * Get a value for a given path of a given object.
+	 *
+	 * @param  {Object} obj
+	 * @param  {string} path
+	 * @param  {*} [defaultValue=undefined]
+	 * @param  {String} [delimiter="."]
+	 * @return {*}
+	 */
 	get(obj,path,defaultValue=undefined,delimiter=".") {
 		if (obj==undefined || obj===null) return undefined;
 		if (path=== undefined || path===null || path==="") return obj===undefined ?  defaultValue : obj;
@@ -73,6 +122,15 @@ class ObjectUtils {
 		return value;
 	}
 
+	/**
+	 * Set a value for a given path of a given object.
+	 *
+	 * @param {Object} obj
+	 * @param {string} path
+	 * @param {*} value
+	 * @param {String} [delimiter="."]
+	 * @return {Object}
+	 */
 	set(obj,path,value,delimiter=".") {
 		if (obj==undefined || obj===null) return obj;
 		if (path=== undefined || path===null || path==="") return obj;
@@ -95,6 +153,15 @@ class ObjectUtils {
 		return obj;
 	}
 
+	/**
+	 * Delete a value for a given path of a given object.
+	 *
+	 * @param  {Object}  obj
+	 * @param  {string}  path
+	 * @param  {Boolean} [prune=true]
+	 * @param  {String}  [delimiter="."]
+	 * @return {Object}
+	 */
 	delete(obj,path,prune=true,delimiter=".") {
 		if (obj==undefined || obj===null) return obj;
 		if (path=== undefined || path===null || path==="") return obj;

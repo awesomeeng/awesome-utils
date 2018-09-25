@@ -8,7 +8,7 @@
 
 const assert = require("assert");
 
-const DateUtils = require("../src/DateUtils");
+const DateUtils = require("../src/Date");
 
 describe("DateUtils",function(){
 	it("constants",function(){

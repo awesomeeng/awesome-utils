@@ -8,7 +8,7 @@
 
 const assert = require("assert");
 
-const ObjectUtils = require("../src/ObjectUtils");
+const ObjectUtils = require("../src/Object");
 
 describe("ObjectUtils",function(){
 	let base = {
@@ -74,6 +74,22 @@ describe("ObjectUtils",function(){
 		});
 		assert.deepStrictEqual(extended.five,5);
 		assert.deepStrictEqual(extended.six.seven,"7");
+	});
+
+	it("deepFreeze",function(){
+		let obj = {
+			one: {
+				two: {
+					three: 123
+				}
+			}
+		};
+		ObjectUtils.deepFreeze(obj);
+		assert.equal(obj.one.two.three,123);
+		assert.throws(()=>{
+			obj.one.two.three = 456;
+		});
+		assert.equal(obj.one.two.three,123);
 	});
 
 	it("paths",function(){
