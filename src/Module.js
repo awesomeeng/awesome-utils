@@ -104,10 +104,10 @@ class ModuleUtils {
 	 * This returns an array of strings, which are the module
 	 * ancestor module.id values.
 	 *
-	 * @param  {[type]} mod            [description]
-	 * @param  {Number} [start=0]      [description]
-	 * @param  {[type]} [end=start+10] [description]
-	 * @return {[type]}                [description]
+	 * @param  {module} mod
+	 * @param  {Number} [start=0]
+	 * @param  {Number} [end=start+10]
+	 * @return {Array<String>}                
 	 */
 	moduleStack(mod,start=0,end=start+10) {
 		if (!mod) throw new Error("Missing module.");
