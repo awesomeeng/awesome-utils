@@ -9,5 +9,6 @@ module.exports = {
 	Object: require("./Object.js"),
 	Parser: require("./Parser.js"),
 	Promise: require("./Promise.js"),
-	Random: require("./Random.js")
+	Random: require("./Random.js"),
+	VM: require("./VM.js")
 };
