@@ -10,7 +10,7 @@ const assert = require("assert");
 
 const ObjectUtils = require("../src/Object");
 
-describe("ObjectUtils",function(){
+describe("AwesomeUtils.Object",function(){
 	let base = {
 		one: {
 			two: {
@@ -74,6 +74,18 @@ describe("ObjectUtils",function(){
 		});
 		assert.deepStrictEqual(extended.five,5);
 		assert.deepStrictEqual(extended.six.seven,"7");
+	});
+
+	it("deepStrictEqual",function(){
+		assert(ObjectUtils.deepStrictEqual(1,1));
+		assert(ObjectUtils.deepStrictEqual("1","1"));
+		assert(ObjectUtils.deepStrictEqual([1],[1]));
+		assert(ObjectUtils.deepStrictEqual({one:1},{one:1}));
+		assert(ObjectUtils.deepStrictEqual({one:1,two:{three:{four:234}}},{one:1,two:{three:{four:234}}}));
+		assert(!ObjectUtils.deepStrictEqual(1,2));
+		assert(!ObjectUtils.deepStrictEqual("1","2"));
+		assert(!ObjectUtils.deepStrictEqual([1],[2]));
+		assert(!ObjectUtils.deepStrictEqual({one:1},{one:2}));
 	});
 
 	it("deepFreeze",function(){

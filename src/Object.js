@@ -2,6 +2,9 @@
 
 "use strict";
 
+const assert = require("assert");
+
+
 /**
  * Object utility functions.
  */
@@ -49,6 +52,17 @@ class ObjectUtils {
 			}
 		});
 		return target;
+	}
+
+	deepStrictEqual(a,b) {
+		try {
+			assert.deepStrictEqual(a,b);
+			return true;
+		}
+		catch (ex) {
+			if (ex instanceof assert.AssertionError) return false;
+			throw ex;
+		}
 	}
 
 	/**

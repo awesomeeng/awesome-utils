@@ -10,7 +10,7 @@ const assert = require("assert");
 
 const DateUtils = require("../src/Date");
 
-describe("DateUtils",function(){
+describe("AwesomeUtils.Date",function(){
 	it("constants",function(){
 		assert.equal(DateUtils.SECOND,1000);
 		assert.equal(DateUtils.MINUTE,1000*60);
