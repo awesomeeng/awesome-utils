@@ -19,7 +19,7 @@
   "scripts": {
     "docs": "jsdoc2md src/** --separators > docs/API.md"
   },
-  "description": "Javascript Utility functions for Enterprise Ready nodejs applications",
+  "description": "Javascript Utility functions for enterprise ready nodejs applications.",
   "directories": {
     "doc": "docs",
     "test": "test"

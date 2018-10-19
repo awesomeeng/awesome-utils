@@ -12,22 +12,9 @@ const PromiseUtils = require("../src/Promise");
 
 describe("AwesomeUtils.Promise",function(){
 	it("sleep",async function(){
+		this.slow(250);
+		
 		let start,spent;
-
-		start = Date.now();
-		await PromiseUtils.sleep(25);
-		spent = Date.now()-start;
-		assert(spent>=25);
-
-		start = Date.now();
-		await PromiseUtils.sleep(0);
-		spent = Date.now()-start;
-		assert(spent<5);
-
-		start = Date.now();
-		await PromiseUtils.sleep(-1);
-		spent = Date.now()-start;
-		assert(spent<5);
 
 		assert.throws(()=>{
 			PromiseUtils.sleep();
@@ -38,9 +25,27 @@ describe("AwesomeUtils.Promise",function(){
 		assert.throws(()=>{
 			PromiseUtils.sleep("asdf");
 		});
+
+		start = Date.now();
+		await PromiseUtils.sleep(10);
+		spent = Date.now()-start;
+		assert(spent>=10);
+
+		start = Date.now();
+		await PromiseUtils.sleep(1);
+		spent = Date.now()-start;
+		assert(spent<25);
+
+		start = Date.now();
+		await PromiseUtils.sleep(-1);
+		spent = Date.now()-start;
+		assert(spent<25);
+
 	});
 
 	it("series",async function(){
+		this.slow(250);
+
 		let x = 2;
 		let answer = await PromiseUtils.series([2,3,4,5],(y)=>{
 			return new Promise((resolve,reject)=>{
@@ -69,6 +74,28 @@ describe("AwesomeUtils.Promise",function(){
 			PromiseUtils.series([1,2,3]);
 		});
 	});
+
+	it("timeout",async function(){
+		this.slow(250);
+
+		try {
+			await PromiseUtils.timeout(PromiseUtils.sleep(50),5);
+			assert.fail("Promise should not resolve, timeout should have occured.");
+		}
+		catch (ex) {
+			assert(true);
+		}
+
+		try {
+			await PromiseUtils.timeout(PromiseUtils.sleep(5),50);
+			assert(true);
+		}
+		catch (ex) {
+			console.log(ex);
+			assert.fail("Promise should resolve before timeout.");
+		}
+	});
+
 
 
 
