@@ -2,6 +2,7 @@ module.exports = {
 	ANSI: require("./ANSI.js"),
 	Array: require("./Array.js"),
 	Class: require("./Class.js"),
+	Comparator: require("./Comparator.js"),
 	Date: require("./Date.js"),
 	FS: require("./FS.js"),
 	Module: require("./Module.js"),
