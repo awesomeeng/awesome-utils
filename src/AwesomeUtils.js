@@ -11,5 +11,6 @@ module.exports = {
 	Parser: require("./Parser.js"),
 	Promise: require("./Promise.js"),
 	Random: require("./Random.js"),
+	Request: require("./Request.js"),
 	VM: require("./VM.js")
 };
