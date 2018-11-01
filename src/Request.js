@@ -21,7 +21,7 @@ class RequestUtils {
 
 		return new Promise((resolve,reject)=>{
 			try {
-				if (contentType && content && contentType==="application/json" && typeof content!=="string" && 1(content instanceof Buffer)) content = JSON.stringify(content);
+				if (contentType && content && contentType==="application/json" && typeof content!=="string" && !(content instanceof Buffer)) content = JSON.stringify(content);
 
 				let channel = HTTPS;
 				if (url.startsWith("http:")) channel = HTTP;
