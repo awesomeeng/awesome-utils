@@ -12,5 +12,6 @@ module.exports = {
 	Promise: require("./Promise.js"),
 	Random: require("./Random.js"),
 	Request: require("./Request.js"),
+	Sequence: require("./Sequence.js"),
 	VM: require("./VM.js")
 };
