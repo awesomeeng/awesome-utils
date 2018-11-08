@@ -27,7 +27,7 @@ class RequestUtils {
 				if (url.startsWith("http:")) channel = HTTP;
 
 				headers = ObjectUtils.extend({},headers||{});
-				if (contentType) headers["Content-Type"] = contentType;
+				if (contentType) headers["content-type"] = contentType;
 
 				options = ObjectUtils.extend({
 					method: method
@@ -89,7 +89,7 @@ class RequestUtils {
 }
 
 const createContentGetter = function createContentGetter(response) {
-	let contentType = response.headers && response.headers["Content-Type"] || "application/octet-stream";
+	let contentType = response.headers && response.headers["content-type"] || "application/octet-stream";
 
 	let error = undefined;
 	let content = undefined;
