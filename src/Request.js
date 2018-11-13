@@ -21,21 +21,25 @@ class RequestUtils {
 
 		return new Promise((resolve,reject)=>{
 			try {
+				headers = ObjectUtils.extend({},headers||{});
+				contentType = contentType || "application/octet-stream";
+				let contentEncoding = this.parseContentEncoding(contentType);
+				contentType = this.parseContentType(contentType);
+				this.addContentTypeAndEncoding(headers,contentType,contentEncoding);
+
 				if (contentType && content && contentType==="application/json" && typeof content!=="string" && !(content instanceof Buffer)) content = JSON.stringify(content);
 
 				let channel = HTTPS;
 				if (url.startsWith("http:")) channel = HTTP;
 
-				headers = ObjectUtils.extend({},headers||{});
-				if (contentType) headers["content-type"] = contentType;
-
 				options = ObjectUtils.extend({
-					method: method
+					method: method,
+					headers: headers
 				},options||{});
 
 				let request = channel.request(url,options,(response)=>{
 					// sets up the content getter.
-					createContentGetter(response);
+					createContentGetter.call(this,response);
 
 					resolve(response);
 				});
@@ -86,10 +90,30 @@ class RequestUtils {
 	patch(url,contentType,content,headers={},options={}) {
 		return this.request("path",url,contentType,content,headers,options);
 	}
+
+	parseContentType(headers) {
+		let contentType = typeof headers!=="string" && headers["content-type"] || typeof headers==="string" && headers || "application/octet-stream";
+		contentType = contentType.replace(/;.*$/,"");
+		return contentType;
+	}
+
+	parseContentEncoding(headers) {
+		let contentType = typeof headers!=="string" && headers["content-type"] || typeof headers==="string" && headers || "application/octet-stream";
+		let contentEncoding = "utf-8";
+		contentType.split(/;\s?/g).forEach((segment)=>{
+			if (segment.startsWith("charset=")) contentEncoding = segment.slice(8);
+		});
+		return contentEncoding;
+	}
+
+	addContentTypeAndEncoding(headers={},contentType="application/octet-stream",contentEncoding="utf-8") {
+		headers["content-type"] = contentType+"; charset="+contentEncoding;
+	}
 }
 
 const createContentGetter = function createContentGetter(response) {
-	let contentType = response.headers && response.headers["content-type"] || "application/octet-stream";
+	let contentType = this.parseContentType(response.headers && response.headers["content-type"] || "application/octet-stream");
+	let contentEncoding = this.parseContentEncoding(response.headers && response.headers["content-type"] || "application/octet-stream");
 
 	let error = undefined;
 	let content = undefined;
@@ -109,9 +133,10 @@ const createContentGetter = function createContentGetter(response) {
 						buffer = Buffer.concat([buffer,chunk]);
 					});
 					response.once("end",()=>{
+						if (contentType.startsWith("text/")) buffer = buffer.toString(contentEncoding);
 						if (contentType==="application/json") {
 							try {
-								buffer = JSON.parse(buffer);
+								buffer = JSON.parse(buffer.toString(contentEncoding));
 							}
 							catch (ex) {
 								error = ex;
