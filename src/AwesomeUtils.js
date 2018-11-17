@@ -13,5 +13,6 @@ module.exports = {
 	Random: require("./Random.js"),
 	Request: require("./Request.js"),
 	Sequence: require("./Sequence.js"),
-	VM: require("./VM.js")
+	VM: require("./VM.js"),
+	Workers: require("./Workers.js")
 };
