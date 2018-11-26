@@ -3,13 +3,17 @@
 module.exports = {
 	"extends": "eslint:recommended",
 	parserOptions: {
-		ecmaVersion: 8
+		ecmaVersion: 2018
 	},
     env: {
         node: true,
         es6: true,
 		mocha: true
     },
+	globals: {
+		Atomics: true,
+		SharedArrayBuffer: true
+	},
     rules: {
 		"no-self-assign": [
 			"off"
