@@ -33,7 +33,7 @@ class WorkerUtils {
 		if (typeof index!=="number") throw new Error("Invalid index.");
 		if (index<0 || index>lock.length) throw new Error("Index out of range.");
 
-		return Atomics.compareExchange(lock,index,0,process.pid)===0;
+		return Atomics.compareExchange(lock,index,0,Workers.threadId+1)===0;
 	}
 
 	unlock(lock,index=0) {
@@ -43,8 +43,8 @@ class WorkerUtils {
 		if (typeof index!=="number") throw new Error("Invalid index.");
 		if (index<0 || index>lock.length) throw new Error("Index out of range.");
 
-		let pid = Atomics.compareExchange(lock,index,process.pid,0);
-		if (pid!==process.pid) throw new Error("Not lock owner.");
+		let pid = Atomics.compareExchange(lock,index,Workers.threadId+1,0);
+		if (pid!==Workers.threadId+1) throw new Error("Not lock owner.");
 		return true;
 	}
 
@@ -69,7 +69,7 @@ class WorkerUtils {
 		if (typeof index!=="number") throw new Error("Invalid index.");
 		if (index<0 || index>lock.length) throw new Error("Index out of range.");
 
-		return Atomics.load(lock,index)===process.pid;
+		return Atomics.load(lock,index)===Workers.threadId+1;
 	}
 
 	waitForLock(lock,index=0,frequency=1,timeout=100) {
