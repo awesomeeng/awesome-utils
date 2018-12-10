@@ -1,5 +1,17 @@
 # AwesomeUtils Release Notes
 
+#### **Version 1.4.1**
+
+ - AwesomeUtils.Workers: Changes lock to use -1 as the unlocked value. Adds initializeLock() function.
+
+ - AwesomeUtils.Workers: Fixes a bug in Workers.lock() and related where it would throw an exception when worker_threads not available in node.
+
+ - Documentation: Fix minor typo in documetation.
+
+ - Documentation: Merge pull request #1 from skratchdot/patch-1
+
+ - Documentation: fixing small typo in documentation.
+
 #### **Version 1.4.0**
 
  - AwesomeUtils.Workers: Switch worker locks to use threadId instead of processId since workers use the same processId as their parents.

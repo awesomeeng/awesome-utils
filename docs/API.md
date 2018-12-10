@@ -14,7 +14,7 @@
 <dd><p>Utilities for dealing with Promises.</p>
 </dd>
 <dt><a href="#VMUtils">VMUtils</a></dt>
-<dd><p>Utilities for working with th eunderlying virtual machine.</p>
+<dd><p>Utilities for working with the underlying virtual machine.</p>
 </dd>
 </dl>
 
@@ -621,7 +621,7 @@ the passed in promise resolve or reject will be swallowed.
 <a name="VMUtils"></a>
 
 ## VMUtils
-Utilities for working with th eunderlying virtual machine.
+Utilities for working with the underlying virtual machine.
 
 **Kind**: global class  
 
