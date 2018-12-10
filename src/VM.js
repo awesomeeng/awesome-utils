@@ -5,7 +5,7 @@
 const STACK_PARSER = /^\s*(at)\s((.+)\s\(|)(.+)(:(\d+))(:(\d+))\)?$|^\s*(at)\s(.+)\s\((<anonymous>)\)?$/;
 
 /**
- * Utilities for working with th eunderlying virtual machine.
+ * Utilities for working with the underlying virtual machine.
  */
 class VMUtils {
 	/**
