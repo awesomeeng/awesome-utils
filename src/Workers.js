@@ -2,6 +2,8 @@
 
 "use strict";
 
+const UNLOCKED = 4294967295;
+
 let Workers = null;
 try {
 	Workers = require("worker_threads");
@@ -19,6 +21,11 @@ class WorkerUtils {
 		return Workers;
 	}
 
+	get threadId() {
+		if (Workers) return Workers.threadId;
+		return process.pid;
+	}
+
 	/**
 	 * Returns true of the lock was obtained, false otherwise.
 	 *
@@ -33,7 +40,7 @@ class WorkerUtils {
 		if (typeof index!=="number") throw new Error("Invalid index.");
 		if (index<0 || index>lock.length) throw new Error("Index out of range.");
 
-		return Atomics.compareExchange(lock,index,0,Workers.threadId+1)===0;
+		return Atomics.compareExchange(lock,index,UNLOCKED,this.threadId)===0;
 	}
 
 	unlock(lock,index=0) {
@@ -43,8 +50,8 @@ class WorkerUtils {
 		if (typeof index!=="number") throw new Error("Invalid index.");
 		if (index<0 || index>lock.length) throw new Error("Index out of range.");
 
-		let pid = Atomics.compareExchange(lock,index,Workers.threadId+1,0);
-		if (pid!==Workers.threadId+1) throw new Error("Not lock owner.");
+		let pid = Atomics.compareExchange(lock,index,this.threadId,UNLOCKED);
+		if (pid!==this.threadId) throw new Error("Not lock owner.");
 		return true;
 	}
 
@@ -55,7 +62,7 @@ class WorkerUtils {
 		if (typeof index!=="number") throw new Error("Invalid index.");
 		if (index<0 || index>lock.length) throw new Error("Index out of range.");
 
-		return Atomics.load(lock,index)!==0;
+		return Atomics.load(lock,index)!==UNLOCKED;
 	}
 
 	isLocked(lock,index=0) {
@@ -69,7 +76,7 @@ class WorkerUtils {
 		if (typeof index!=="number") throw new Error("Invalid index.");
 		if (index<0 || index>lock.length) throw new Error("Index out of range.");
 
-		return Atomics.load(lock,index)===Workers.threadId+1;
+		return Atomics.load(lock,index)===this.threadId;
 	}
 
 	waitForLock(lock,index=0,frequency=1,timeout=100) {
