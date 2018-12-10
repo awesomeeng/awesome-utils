@@ -2,7 +2,7 @@
 
 "use strict";
 
-const UNLOCKED = 4294967295;
+const UNLOCKED = -1;
 
 let Workers = null;
 try {
@@ -26,6 +26,16 @@ class WorkerUtils {
 		return process.pid;
 	}
 
+	initializeLock(lock,index=0) {
+		if (!lock) throw new Error("Missing lock.");
+		if (!(lock instanceof Int32Array)) throw new Error("Invalid lock; must be Int32Array.");
+		if (index===undefined || index===null) throw new Error("Missing index.");
+		if (typeof index!=="number") throw new Error("Invalid index.");
+		if (index<0 || index>lock.length) throw new Error("Index out of range.");
+
+		lock[0] = UNLOCKED;
+	}
+
 	/**
 	 * Returns true of the lock was obtained, false otherwise.
 	 *
@@ -40,7 +50,7 @@ class WorkerUtils {
 		if (typeof index!=="number") throw new Error("Invalid index.");
 		if (index<0 || index>lock.length) throw new Error("Index out of range.");
 
-		return Atomics.compareExchange(lock,index,UNLOCKED,this.threadId)===0;
+		return Atomics.compareExchange(lock,index,UNLOCKED,this.threadId)===UNLOCKED;
 	}
 
 	unlock(lock,index=0) {
