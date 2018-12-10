@@ -20,7 +20,7 @@ Require it, then make calls against it. See below for documentation.
 const AwesomeUtils = require("@awesomeeng/awesome-utils");
 
 ...
-await AwesumeUtils.Promise.sleep(1000); // sleeps for 1 second.
+await AwesomeUtils.Promise.sleep(1000); // sleeps for 1 second.
 ...
 ```
 
