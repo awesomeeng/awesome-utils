@@ -552,15 +552,16 @@ Utilities for dealing with Promises.
 **Kind**: global class  
 
 * [PromiseUtils](#PromiseUtils)
-    * [.sleep(ms)](#PromiseUtils+sleep) ⇒ <code>Promise</code>
-    * [.series(array)](#PromiseUtils+series) ⇒ <code>Promise</code>
+    * [.sleep(duration)](#PromiseUtils+sleep) ⇒ <code>Promise</code>
+    * [.series(array, f)](#PromiseUtils+series) ⇒ <code>Promise</code>
+    * [.timeout(promise, [ttl], [timeoutException])](#PromiseUtils+timeout) ⇒ <code>Promise</code>
 
 
 * * *
 
 <a name="PromiseUtils+sleep"></a>
 
-### promiseUtils.sleep(ms) ⇒ <code>Promise</code>
+### promiseUtils.sleep(duration) ⇒ <code>Promise</code>
 Creates a promise that resolves after n milliseconds. Great for usage
 with await for delaying some period of time.
 
@@ -568,24 +569,51 @@ with await for delaying some period of time.
 
 | Param | Type |
 | --- | --- |
-| ms | <code>number</code> | 
+| duration | <code>number</code> | 
 
 
 * * *
 
 <a name="PromiseUtils+series"></a>
 
-### promiseUtils.series(array) ⇒ <code>Promise</code>
-Execute an array of Promises in serial order. Resolve when
-all have resolve. Reject when any reject. Reject will short
-circuit and any remaining promises after one rejects will
-not be executed.
+### promiseUtils.series(array, f) ⇒ <code>Promise</code>
+Execute the given function for each cell of the array, in series order.
+If the given function returns a Promise, the promise will await resolution
+before the function is called next.  This creates a series execution of
+an array of Promise executions.  On a reject, all remaining executions
+are skipped.
+
+The given function is called with the signature
+f(item,index,originalArray,resultsArray).
 
 **Kind**: instance method of [<code>PromiseUtils</code>](#PromiseUtils)  
 
 | Param | Type |
 | --- | --- |
 | array | <code>Array.&lt;Promise&gt;</code> | 
+| f | <code>function</code> | 
+
+
+* * *
+
+<a name="PromiseUtils+timeout"></a>
+
+### promiseUtils.timeout(promise, [ttl], [timeoutException]) ⇒ <code>Promise</code>
+In essence this lets you wrap a promise in a timeout such that if the
+timeout occurs before the promise resolves or reject, this rejects.
+
+Returns a promise that will resolve/reject if the passed in promise resolves
+or rejects before the passed in ttl time has elapsed. If the ttl time does
+elsapse, the returned promise will reject (with the optional exception) and
+the passed in promise resolve or reject will be swallowed.
+
+**Kind**: instance method of [<code>PromiseUtils</code>](#PromiseUtils)  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| promise | <code>Promise</code> |  | 
+| [ttl] | <code>number</code> | <code>30000</code> | 
+| [timeoutException] | <code>Error</code> | <code>new Error(&quot;Timed  out.&quot;)</code> | 
 
 
 * * *
