@@ -215,7 +215,7 @@ class ANSIUtils {
 		return FG_BRIGHT_WHITE+s+FG_OFF;
 	}
 
-	stylize(style,s="") {
+	stylize(style="",s="") {
 		let styles = style.split(/,|\s/g);
 		let f = styles.reduce((f,style)=>{
 			let g = this.mapStyle(style);
