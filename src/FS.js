@@ -165,7 +165,7 @@ class FSUtils {
 	 * DESTRUCTIVE AND SHOULD BE USED WITH CARE.
 	 *
 	 * @param  {string} path
-	 * @return {void}      
+	 * @return {void}
 	 */
 	recursiveRmdirSync(path) {
 		if (!path) throw new Error("Missing path.");
@@ -173,24 +173,23 @@ class FSUtils {
 
 		path = path.replace(/\\\\|\\/g,"/");
 
-		let stat = this.statSync(path);
-		if (!stat) throw new Error("Invalid path, not found: "+path);
+		let files = this.recursiveListSync(path);
 
-		if (stat.isDirectory()) {
-			let files = this.recursiveListSync(path,null,false);
+		let dirs = [];
+		files.forEach((path)=>{
+			let stat = this.statSync(path);
+			if (!stat) return;
 
-			files.reverse().forEach((file)=>{
-				file = (path.endsWith("/") ? path : path+"/")+file;
-				let stat = this.statSync(file);
-				if (stat.isDirectory()) FS.rmdirSync(file);
-				else FS.unlinkSync(file);
-			});
-
+			if (stat.isDirectory()) {
+				dirs.push(stat);
+			}
+			else {
+				FS.unlinkSync(path);
+			}
+		});
+		dirs.forEach((path)=>{
 			FS.rmdirSync(path);
-		}
-		else {
-			throw new Error("Cannot use recursiveRmdirSync on a non-directory: "+path);
-		}
+		});
 	}
 
 	stat(path) {
