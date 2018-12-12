@@ -172,11 +172,15 @@ class FSUtils {
 		if (typeof path!=="string") throw new Error("Invalid path.");
 
 		path = path.replace(/\\\\|\\/g,"/");
+		if (path==="/") throw new Error("rmdir on '/' is not allowed.");
 
 		let files = this.recursiveListSync(path);
+		files = files.reverse();
 
+		let dir = path;
 		let dirs = [];
 		files.forEach((path)=>{
+			path = Path.resolve(dir,path);
 			let stat = this.statSync(path);
 			if (!stat) return;
 
@@ -190,6 +194,10 @@ class FSUtils {
 		dirs.forEach((path)=>{
 			FS.rmdirSync(path);
 		});
+
+		if (this.existsSync(path)) {
+			FS.rmdirSync(path);
+		}
 	}
 
 	stat(path) {
