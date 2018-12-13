@@ -174,7 +174,7 @@ class FSUtils {
 		path = path.replace(/\\\\|\\/g,"/");
 		if (path==="/") throw new Error("rmdir on '/' is not allowed.");
 
-		let files = this.recursiveListSync(path);
+		let files = this.recursiveListSync(path,null,false);
 		files = files.reverse();
 
 		let dir = path;
@@ -185,7 +185,7 @@ class FSUtils {
 			if (!stat) return;
 
 			if (stat.isDirectory()) {
-				dirs.push(stat);
+				dirs.push(path);
 			}
 			else {
 				FS.unlinkSync(path);
