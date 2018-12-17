@@ -1,5 +1,9 @@
 # AwesomeUtils Release Notes
 
+#### **Version 1.4.4**
+
+ - AwesomeUtils.Request: Fix minor bugs in contentType and contentEncoding parsers. Adds contetType and contentEncoding properties to response object.
+
 #### **Version 1.4.3**
 
  - AwesomeUtils.FS: Minor refactor for recursiveRmdirSync not removing sub-directories.
