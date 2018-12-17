@@ -40,6 +40,10 @@ class RequestUtils {
 				let request = channel.request(url,options,(response)=>{
 					// sets up the content getter.
 					createContentGetter.call(this,response);
+					// add contentType field.
+					response.contentType = this.parseContentType(response.headers);
+					// add contentEncoding field.
+					response.contentEncoding = this.parseContentEncoding(response.headers);
 
 					resolve(response);
 				});
@@ -92,13 +96,13 @@ class RequestUtils {
 	}
 
 	parseContentType(headers) {
-		let contentType = typeof headers!=="string" && headers["content-type"] || typeof headers==="string" && headers || "application/octet-stream";
+		let contentType = typeof headers!=="string" && headers["content-type"] || typeof headers!=="string" && headers["Content-Type"] || typeof headers==="string" && headers || "application/octet-stream";
 		contentType = contentType.replace(/;.*$/,"");
 		return contentType;
 	}
 
 	parseContentEncoding(headers) {
-		let contentType = typeof headers!=="string" && headers["content-type"] || typeof headers==="string" && headers || "application/octet-stream";
+		let contentType = typeof headers!=="string" && headers["content-type"] || typeof headers!=="string" && headers["Content-Type"] || typeof headers==="string" && headers || "application/octet-stream";
 		let contentEncoding = "utf-8";
 		contentType.split(/;\s?/g).forEach((segment)=>{
 			if (segment.startsWith("charset=")) contentEncoding = segment.slice(8);
@@ -112,8 +116,8 @@ class RequestUtils {
 }
 
 const createContentGetter = function createContentGetter(response) {
-	let contentType = this.parseContentType(response.headers && response.headers["content-type"] || "application/octet-stream");
-	let contentEncoding = this.parseContentEncoding(response.headers && response.headers["content-type"] || "application/octet-stream");
+	let contentType = this.parseContentType(response.headers);
+	let contentEncoding = this.parseContentEncoding(response.headers);
 
 	let error = undefined;
 	let content = undefined;
