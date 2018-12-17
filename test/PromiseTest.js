@@ -13,7 +13,7 @@ const PromiseUtils = require("../src/Promise");
 describe("AwesomeUtils.Promise",function(){
 	it("sleep",async function(){
 		this.slow(250);
-		
+
 		let start,spent;
 
 		assert.throws(()=>{
@@ -40,7 +40,6 @@ describe("AwesomeUtils.Promise",function(){
 		await PromiseUtils.sleep(-1);
 		spent = Date.now()-start;
 		assert(spent<25);
-
 	});
 
 	it("series",async function(){
@@ -91,7 +90,6 @@ describe("AwesomeUtils.Promise",function(){
 			assert(true);
 		}
 		catch (ex) {
-			console.log(ex);
 			assert.fail("Promise should resolve before timeout.");
 		}
 	});

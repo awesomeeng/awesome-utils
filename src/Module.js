@@ -4,8 +4,6 @@
 
 const Path = require("path");
 
-const STACK_PARSER = /^\s*(at)\s((.+)\s\(|)(.+)(:(\d+))(:(\d+))\)?$|^\s*(at)\s(.+)\s\((<anonymous>)\)?$/;
-
 /**
  * Utilities for working with modules, or understanding the code itself.
  */
@@ -107,7 +105,7 @@ class ModuleUtils {
 	 * @param  {module} mod
 	 * @param  {Number} [start=0]
 	 * @param  {Number} [end=start+10]
-	 * @return {Array<String>}                
+	 * @return {Array<String>}
 	 */
 	moduleStack(mod,start=0,end=start+10) {
 		if (!mod) throw new Error("Missing module.");
