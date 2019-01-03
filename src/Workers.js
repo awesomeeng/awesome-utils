@@ -4,6 +4,8 @@
 
 const UNLOCKED = -1;
 
+const FSUtils = require("./FS");
+
 let Workers = null;
 try {
 	Workers = require("worker_threads");
@@ -24,6 +26,14 @@ class WorkerUtils {
 	get threadId() {
 		if (Workers) return Workers.threadId;
 		return process.pid;
+	}
+
+	create(filename,options) {
+		if (!filename) throw new Error("Missing filename.");
+		if (typeof filename!=="string") throw new Error("Invalid filename.");
+		if (!FSUtils.existsSync(filename)) throw new Error("Filename '"+filename+"' not found.");
+
+		return new Workers.Worker(filename,options);
 	}
 
 	initializeLock(lock,index=0) {
