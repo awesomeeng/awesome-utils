@@ -11,7 +11,8 @@ class FSUtils {
 	exists(path) {
 		return new Promise(async (resolve,reject)=>{
 			try {
-				resolve(await !!this.stat(path));
+				let stat = await this.stat(path);
+				resolve(!!stat);
 			}
 			catch (ex) {
 				return reject(ex);
@@ -24,7 +25,7 @@ class FSUtils {
 			return !!this.statSync(path);
 		}
 		catch (ex) {
-			return false;
+			throw ex;
 		}
 	}
 
@@ -204,23 +205,18 @@ class FSUtils {
 		return new Promise((resolve,reject)=>{
 			try {
 				FS.stat(path,(err,stats)=>{
-					if (err) reject(err);
-					resolve(stats);
+					if (err) resolve(null);
+					else resolve(stats);
 				});
 			}
 			catch (ex) {
-				return resolve(null);
+				return reject(ex);
 			}
 		});
 	}
 
 	statSync(path) {
-		try {
-			return FS.statSync(path);
-		}
-		catch (ex) {
-			return null;
-		}
+		return FS.statSync(path);
 	}
 
 }
