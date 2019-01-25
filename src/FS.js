@@ -9,13 +9,13 @@ const ArrayUtils = require("./Array");
 
 class FSUtils {
 	exists(path) {
-		return new Promise(async (resolve,reject)=>{
+		return new Promise(async (resolve)=>{
 			try {
 				let stat = await this.stat(path);
 				resolve(!!stat);
 			}
 			catch (ex) {
-				return reject(ex);
+				resolve(false);
 			}
 		});
 	}
@@ -25,7 +25,7 @@ class FSUtils {
 			return !!this.statSync(path);
 		}
 		catch (ex) {
-			throw ex;
+			return false;
 		}
 	}
 
