@@ -29,6 +29,10 @@ class ArrayUtils {
 		},[]);
 	}
 
+	unique(array) {
+		return [...new Set(array)];
+	}
+
 	without(array,...excludes) {
 		if (!array) throw new Error("Missing array.");
 		if (!(array instanceof Array)) throw new Error("Invalid array.");
