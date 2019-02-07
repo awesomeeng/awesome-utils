@@ -1,5 +1,15 @@
 # AwesomeUtils Release Notes
 
+#### **Version 1.4.5**
+
+ - AwesomeUtils.Array: Adds Array.unique().
+
+ - AwesomeUtils.FS: Changes exist to return false on an error.
+
+ - AwesomeUtils.FS: fixes bug in asyncronous exists call which would return true even if file didnt exist.
+
+ - AwesomeUtils.Workers: Adds Workers.create() as shortcut to new Worker().
+
 #### **Version 1.4.4**
 
  - AwesomeUtils.Request: Fix minor bugs in contentType and contentEncoding parsers. Adds contetType and contentEncoding properties to response object.
