@@ -1,6 +1,10 @@
 # AwesomeUtils Release Notes
 
-#### **Version 1.4.5**
+#### **Version 1.4.7**
+
+ - AwesomeUtils.FS: Changes FS.stat and FS.statSync to resolve or return null if the file is not found.
+
+#### **Version 1.4.6**
 
  - Updating dependencies.
 
