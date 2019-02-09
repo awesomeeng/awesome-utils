@@ -1,6 +1,6 @@
 {
   "name": "@awesomeeng/awesome-utils",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "author": "the awesome engineering company",
   "license": "MIT",
   "contributors": [
@@ -17,9 +17,9 @@
   },
   "optionalDependencies": {},
   "scripts": {
-	"lint": "eslint src test",
+    "lint": "eslint src test",
     "docs": "jsdoc2md src/** --separators > docs/API.md",
-	"test": "mocha test",
+    "test": "mocha test",
     "tests": "mocha test"
   },
   "description": "Javascript Utility functions for enterprise ready nodejs applications.",

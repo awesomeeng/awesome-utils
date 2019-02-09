@@ -2,6 +2,10 @@
 
 #### **Version 1.4.5**
 
+ - Updating dependencies.
+
+#### **Version 1.4.5**
+
  - AwesomeUtils.Array: Adds Array.unique().
 
  - AwesomeUtils.FS: Changes exist to return false on an error.
