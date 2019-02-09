@@ -210,15 +210,21 @@ class FSUtils {
 				});
 			}
 			catch (ex) {
+				if (ex.code==="ENOENT") resolve(null);
 				return reject(ex);
 			}
 		});
 	}
 
 	statSync(path) {
-		return FS.statSync(path);
+		try {
+			return FS.statSync(path);
+		}
+		catch (ex) {
+			if (ex.code==="ENOENT") return null;
+			throw ex;
+		}
 	}
-
 }
 
 const _list = function _list(path,filesOnly) {
