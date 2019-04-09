@@ -5,6 +5,7 @@ module.exports = {
 	Comparator: require("./Comparator.js"),
 	Date: require("./Date.js"),
 	FS: require("./FS.js"),
+	MimeTypes: require("./MimeTypes.js"),
 	Module: require("./Module.js"),
 	Net: require("./Net.js"),
 	Object: require("./Object.js"),
