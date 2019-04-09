@@ -1,5 +1,9 @@
 # AwesomeUtils Release Notes
 
+#### **Version 1.4.8**
+
+ - Adds MimeTypes utilities.
+
 #### **Version 1.4.7**
 
  - AwesomeUtils.FS: Changes FS.stat and FS.statSync to resolve or return null if the file is not found.
