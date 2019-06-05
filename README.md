@@ -1,6 +1,6 @@
 # AwesomeUtils
 
-Javascript Utility functions for Enterprise Ready nodejs applications
+Javascript Utility functions for enterprise nodejs applications
 
 ## Disclaimer
 

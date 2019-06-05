@@ -22,7 +22,7 @@
     "test": "mocha test",
     "tests": "mocha test"
   },
-  "description": "Javascript Utility functions for enterprise ready nodejs applications.",
+  "description": "Javascript Utility functions for enterprise nodejs applications.",
   "directories": {
     "doc": "docs",
     "test": "test"
