@@ -1,6 +1,6 @@
 {
   "name": "@awesomeeng/awesome-utils",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "author": "the awesome engineering company",
   "license": "MIT",
   "contributors": [
@@ -12,8 +12,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "jsdoc-to-markdown": "*",
-    "mocha": "*"
+    "jsdoc-to-markdown": "^5.0.2",
+    "mocha": "^6.2.1"
   },
   "optionalDependencies": {},
   "scripts": {

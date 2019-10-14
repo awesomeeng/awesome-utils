@@ -95,7 +95,7 @@ Returns the number of milliseconds in a single week.
 
 <a name="DateUtils+DAYS_OF_WEEK"></a>
 
-### dateUtils.DAYS_OF_WEEK
+### dateUtils.DAYS\_OF\_WEEK
 Returns an array of the days of the week, in english.
 
 **Kind**: instance property of [<code>DateUtils</code>](#DateUtils)  
@@ -104,7 +104,7 @@ Returns an array of the days of the week, in english.
 
 <a name="DateUtils+DAYS_OF_WEEK3"></a>
 
-### dateUtils.DAYS_OF_WEEK3
+### dateUtils.DAYS\_OF\_WEEK3
 Returns an array of the shortened 3 character days of the week, in english.
 
 **Kind**: instance property of [<code>DateUtils</code>](#DateUtils)  
@@ -113,7 +113,7 @@ Returns an array of the shortened 3 character days of the week, in english.
 
 <a name="DateUtils+DAYS_OF_WEEK2"></a>
 
-### dateUtils.DAYS_OF_WEEK2
+### dateUtils.DAYS\_OF\_WEEK2
 Returns an array of the shortened 2 character days of the week, in english.
 
 **Kind**: instance property of [<code>DateUtils</code>](#DateUtils)  
@@ -141,12 +141,7 @@ Returns an array of the shortened 3 character months of the year, in english.
 <a name="DateUtils+floor"></a>
 
 ### dateUtils.floor(date, to) ⇒ <code>Date</code>
-Given some date, floor it to the nearest `to` argument, where `to` is some
-number of milliseconds. For example, to floor to the nearest minute you
-would do `floor(date,60000)` where `60000` is the number of milliseconds in
-a single date.  You can use this in conjunction with `SECOND`, `MINUTE`,
-`HOUR`, and `DAY`. See also `floorSecond()`, `floorMinute()`, `floorHour()`,
-and `floorDay()` below.
+Given some date, floor it to the nearest `to` argument, where `to` is somenumber of milliseconds. For example, to floor to the nearest minute youwould do `floor(date,60000)` where `60000` is the number of milliseconds ina single date.  You can use this in conjunction with `SECOND`, `MINUTE`,`HOUR`, and `DAY`. See also `floorSecond()`, `floorMinute()`, `floorHour()`,and `floorDay()` below.
 
 **Kind**: instance method of [<code>DateUtils</code>](#DateUtils)  
 
@@ -217,12 +212,7 @@ Floor the given date to the nearest day.
 <a name="DateUtils+from"></a>
 
 ### dateUtils.from(date) ⇒ <code>Date</code>
-Given some date or date line object, return a Date object.  This allows
-you to quickly move between different types of date like objects.  It
-will parse nubmers as a unix epoch, a string of numbers as a unix epoch,
-JS Date object as a Date Object, or a String as a `Date.parse()` call.
-
-Basically, it does its best to retunr a Date Object or an exception.
+Given some date or date line object, return a Date object.  This allowsyou to quickly move between different types of date like objects.  Itwill parse nubmers as a unix epoch, a string of numbers as a unix epoch,JS Date object as a Date Object, or a String as a `Date.parse()` call.Basically, it does its best to retunr a Date Object or an exception.
 
 **Kind**: instance method of [<code>DateUtils</code>](#DateUtils)  
 
@@ -250,47 +240,7 @@ Given some date, compute what day of the year it is.
 <a name="DateUtils+format"></a>
 
 ### dateUtils.format(date, pattern) ⇒ <code>string</code>
-Format a given date using a given pattern.  Patterns are built using the following chart similar to
-how momentjs, datejs, php strftime, Java SimpleDateFormat, etc.
-
-You use one or more of the patterns from above to create a pattern.  You may also use literals in your
-pattern like `YYYYMMDD'T'HHMMSSSSS'ZULU'` where both 'T' and 'ZULU' are literals and are inserted verbatim.
-
-| Pattern | Substitution                             | Example against July 20, 1969, 20:18:04.017 UTC |
-|---------|------------------------------------------|-------------------------------------------------|
-| YY      | 2 digit year.                            | 69                                              |
-| YYYY    | 4 digit year.                            | 1969                                            |
-| M       | numeric month, not zero filled.          | 7                                               |
-| MM      | numeric month, zero filled.              | 07                                              |
-| MMM     | shortened 3 character month name.        | Jul                                             |
-| MMMM    | full month name                          | July                                            |
-| D       | numeric day of month, not zero filled.   | 20                                              |
-| DD      | numeric day of month, zero filled.       | 20                                              |
-| DDD     | numeric day of year, not zero filled.    | 200                                             |
-| DDDD    | numeric day of year, zero filled.        | 200                                             |
-| d       | numeric day of the week (0=sunday).      | 0                                               |
-| dd      | shortened 2 character day of the week    | Su                                              |
-| ddd     | shortened 3 character day of the week    | Sun                                             |
-| dddd    | full textual day of the week             | Sunday                                          |
-| A       | AM or PM.                                | PM                                              |
-| a       | am or pm.                                | pm                                              |
-| H       | 24 0 based hour of day, not zero filled. | 20                                              |
-| HH      | 24 0 based hour of day, zero filled.     | 20                                              |
-| h       | 12 hour of day, not zero filled.         | 8                                               |
-| hh      | 12 hour of day, zero filled.             | 8                                               |
-| k       | 24 1 based hour of day, not zero filled. | 21                                              |
-| kk      | 24 1 based hour of day, zero filled.     | 21                                              |
-| m       | minute of hour, not zero filled.         | 18                                              |
-| mm      | minute of hour, zero filled.             | 18                                              |
-| s       | second of minute, not zero filled.       | 4                                               |
-| ss      | second of minute, zero filled.           | 04                                              |
-| S       | milliseconds of second, not zero filled. | 17                                              |
-| SSS     | milliseconds of second, zero filled.     | 017                                             |
-| z       | textual time zone                        | UTC                                             |
-| Z       | relative time zone with separator        | -00:00                                          |
-| ZZ      | relative time zone without separator     | -0000                                           |
-| X       | unix timestamp (seconds)                 | -14182916                                       |
-| x       | unix timestamp (milliseconds)            | -14182916000                                    |
+Format a given date using a given pattern.  Patterns are built using the following chart similar tohow momentjs, datejs, php strftime, Java SimpleDateFormat, etc.You use one or more of the patterns from above to create a pattern.  You may also use literals in yourpattern like `YYYYMMDD'T'HHMMSSSSS'ZULU'` where both 'T' and 'ZULU' are literals and are inserted verbatim.| Pattern | Substitution                             | Example against July 20, 1969, 20:18:04.017 UTC ||---------|------------------------------------------|-------------------------------------------------|| YY      | 2 digit year.                            | 69                                              || YYYY    | 4 digit year.                            | 1969                                            || M       | numeric month, not zero filled.          | 7                                               || MM      | numeric month, zero filled.              | 07                                              || MMM     | shortened 3 character month name.        | Jul                                             || MMMM    | full month name                          | July                                            || D       | numeric day of month, not zero filled.   | 20                                              || DD      | numeric day of month, zero filled.       | 20                                              || DDD     | numeric day of year, not zero filled.    | 200                                             || DDDD    | numeric day of year, zero filled.        | 200                                             || d       | numeric day of the week (0=sunday).      | 0                                               || dd      | shortened 2 character day of the week    | Su                                              || ddd     | shortened 3 character day of the week    | Sun                                             || dddd    | full textual day of the week             | Sunday                                          || A       | AM or PM.                                | PM                                              || a       | am or pm.                                | pm                                              || H       | 24 0 based hour of day, not zero filled. | 20                                              || HH      | 24 0 based hour of day, zero filled.     | 20                                              || h       | 12 hour of day, not zero filled.         | 8                                               || hh      | 12 hour of day, zero filled.             | 8                                               || k       | 24 1 based hour of day, not zero filled. | 21                                              || kk      | 24 1 based hour of day, zero filled.     | 21                                              || m       | minute of hour, not zero filled.         | 18                                              || mm      | minute of hour, zero filled.             | 18                                              || s       | second of minute, not zero filled.       | 4                                               || ss      | second of minute, zero filled.           | 04                                              || S       | milliseconds of second, not zero filled. | 17                                              || SSS     | milliseconds of second, zero filled.     | 017                                             || z       | textual time zone                        | UTC                                             || Z       | relative time zone with separator        | -00:00                                          || ZZ      | relative time zone without separator     | -0000                                           || X       | unix timestamp (seconds)                 | -14182916                                       || x       | unix timestamp (milliseconds)            | -14182916000                                    |
 
 **Kind**: instance method of [<code>DateUtils</code>](#DateUtils)  
 
@@ -352,15 +302,7 @@ Requires a filename, relative to a given module.
 <a name="ModuleUtils+unrequire"></a>
 
 ### moduleUtils.unrequire(mod, [removeChildren]) ⇒ <code>number</code>
-Removes a module from the require cache, thus making it
-reload again if required. Also, any children that
-were loaded by the given module are also removed.
-
-Returns the total number of modules removed.
-
-You may optional indicate if the unrequire should remove
-dependant children as well. This can have unwanted side-effects
-so use with caution.
+Removes a module from the require cache, thus making itreload again if required. Also, any children thatwere loaded by the given module are also removed.Returns the total number of modules removed.You may optional indicate if the unrequire should removedependant children as well. This can have unwanted side-effectsso use with caution.
 
 **Kind**: instance method of [<code>ModuleUtils</code>](#ModuleUtils)  
 
@@ -375,13 +317,7 @@ so use with caution.
 <a name="ModuleUtils+moduleSource"></a>
 
 ### moduleUtils.moduleSource(depth) ⇒ <code>string</code>
-Returns the filename of the code that called this function.
-This works by throwing and catching an exception and then reading the stack
-trace of the exception and finding the info it needs.
-
-*depth* specifies how far back into the stack we should go. So if you want
-the caller of this function, set it to 0 (or omit it). If you want the
-caller of the caller of this function, set it to 1. etc.
+Returns the filename of the code that called this function.This works by throwing and catching an exception and then reading the stacktrace of the exception and finding the info it needs.*depth* specifies how far back into the stack we should go. So if you wantthe caller of this function, set it to 0 (or omit it). If you want thecaller of the caller of this function, set it to 1. etc.
 
 **Kind**: instance method of [<code>ModuleUtils</code>](#ModuleUtils)  
 
@@ -395,11 +331,7 @@ caller of the caller of this function, set it to 1. etc.
 <a name="ModuleUtils+moduleStack"></a>
 
 ### moduleUtils.moduleStack(mod, [start], [end]) ⇒ <code>Array.&lt;String&gt;</code>
-Returns the module require stack for the given module. That is, how
-was the given module imported (required) into the current execution.
-
-This returns an array of strings, which are the module
-ancestor module.id values.
+Returns the module require stack for the given module. That is, howwas the given module imported (required) into the current execution.This returns an array of strings, which are the moduleancestor module.id values.
 
 **Kind**: instance method of [<code>ModuleUtils</code>](#ModuleUtils)  
 
@@ -434,8 +366,7 @@ Object utility functions.
 <a name="ObjectUtils+isPlainObject"></a>
 
 ### objectUtils.isPlainObject(obj) ⇒ <code>Boolean</code>
-Returns true oif the given object is a "plain" javascript object, meaning it
-doesnt inherit from some other type of js object like an array, date, error, etc.
+Returns true oif the given object is a "plain" javascript object, meaning itdoesnt inherit from some other type of js object like an array, date, error, etc.
 
 **Kind**: instance method of [<code>ObjectUtils</code>](#ObjectUtils)  
 
@@ -464,8 +395,7 @@ deep clone of each given source into the target.
 <a name="ObjectUtils+deepFreeze"></a>
 
 ### objectUtils.deepFreeze(obj) ⇒ <code>void</code>
-Call Object.freeze() on the object and each property of the
-object, essentially freezing the entire structure.
+Call Object.freeze() on the object and each property of theobject, essentially freezing the entire structure.
 
 **Kind**: instance method of [<code>ObjectUtils</code>](#ObjectUtils)  
 
@@ -562,8 +492,7 @@ Utilities for dealing with Promises.
 <a name="PromiseUtils+sleep"></a>
 
 ### promiseUtils.sleep(duration) ⇒ <code>Promise</code>
-Creates a promise that resolves after n milliseconds. Great for usage
-with await for delaying some period of time.
+Creates a promise that resolves after n milliseconds. Great for usagewith await for delaying some period of time.
 
 **Kind**: instance method of [<code>PromiseUtils</code>](#PromiseUtils)  
 
@@ -577,14 +506,7 @@ with await for delaying some period of time.
 <a name="PromiseUtils+series"></a>
 
 ### promiseUtils.series(array, f) ⇒ <code>Promise</code>
-Execute the given function for each cell of the array, in series order.
-If the given function returns a Promise, the promise will await resolution
-before the function is called next.  This creates a series execution of
-an array of Promise executions.  On a reject, all remaining executions
-are skipped.
-
-The given function is called with the signature
-f(item,index,originalArray,resultsArray).
+Execute the given function for each cell of the array, in series order.If the given function returns a Promise, the promise will await resolutionbefore the function is called next.  This creates a series execution ofan array of Promise executions.  On a reject, all remaining executionsare skipped.The given function is called with the signaturef(item,index,originalArray,resultsArray).
 
 **Kind**: instance method of [<code>PromiseUtils</code>](#PromiseUtils)  
 
@@ -599,13 +521,7 @@ f(item,index,originalArray,resultsArray).
 <a name="PromiseUtils+timeout"></a>
 
 ### promiseUtils.timeout(promise, [ttl], [timeoutException]) ⇒ <code>Promise</code>
-In essence this lets you wrap a promise in a timeout such that if the
-timeout occurs before the promise resolves or reject, this rejects.
-
-Returns a promise that will resolve/reject if the passed in promise resolves
-or rejects before the passed in ttl time has elapsed. If the ttl time does
-elsapse, the returned promise will reject (with the optional exception) and
-the passed in promise resolve or reject will be swallowed.
+In essence this lets you wrap a promise in a timeout such that if thetimeout occurs before the promise resolves or reject, this rejects.Returns a promise that will resolve/reject if the passed in promise resolvesor rejects before the passed in ttl time has elapsed. If the ttl time doeselsapse, the returned promise will reject (with the optional exception) andthe passed in promise resolve or reject will be swallowed.
 
 **Kind**: instance method of [<code>PromiseUtils</code>](#PromiseUtils)  
 
@@ -637,13 +553,7 @@ Utilities for working with the underlying virtual machine.
 <a name="VMUtils+executionLine"></a>
 
 ### vmUtils.executionLine(depth) ⇒ <code>number</code>
-Returns the line number of the code of the line that called the line() function.
-This works by throwing and catching an exception and then reading the stack
-trace of the exception and finding the info it needs.
-
-*depth* specifies how far back into the stack we should go. So if you want
-the caller of this function, set it to 0 (or omit it). If you want the
-caller of the caller of this function, set it to 1. etc.
+Returns the line number of the code of the line that called the line() function.This works by throwing and catching an exception and then reading the stacktrace of the exception and finding the info it needs.*depth* specifies how far back into the stack we should go. So if you wantthe caller of this function, set it to 0 (or omit it). If you want thecaller of the caller of this function, set it to 1. etc.
 
 **Kind**: instance method of [<code>VMUtils</code>](#VMUtils)  
 
@@ -657,13 +567,7 @@ caller of the caller of this function, set it to 1. etc.
 <a name="VMUtils+executionSource"></a>
 
 ### vmUtils.executionSource(depth) ⇒ <code>string</code>
-Returns the filename of the code that called this function.
-This works by throwing and catching an exception and then reading the stack
-trace of the exception and finding the info it needs.
-
-*depth* specifies how far back into the stack we should go. So if you want
-the caller of this function, set it to 0 (or omit it). If you want the
-caller of the caller of this function, set it to 1. etc.
+Returns the filename of the code that called this function.This works by throwing and catching an exception and then reading the stacktrace of the exception and finding the info it needs.*depth* specifies how far back into the stack we should go. So if you wantthe caller of this function, set it to 0 (or omit it). If you want thecaller of the caller of this function, set it to 1. etc.
 
 **Kind**: instance method of [<code>VMUtils</code>](#VMUtils)  
 
@@ -677,13 +581,7 @@ caller of the caller of this function, set it to 1. etc.
 <a name="VMUtils+executionSourceAndLine"></a>
 
 ### vmUtils.executionSourceAndLine(depth) ⇒ <code>string</code>
-Returns the filename and line number of the code that called this function.
-This works by throwing and catching an exception and then reading the stack
-trace of the exception and finding the info it needs.
-
-*depth* specifies how far back into the stack we should go. So if you want
-the caller of this function, set it to 0 (or omit it). If you want the
-caller of the caller of this function, set it to 1. etc.
+Returns the filename and line number of the code that called this function.This works by throwing and catching an exception and then reading the stacktrace of the exception and finding the info it needs.*depth* specifies how far back into the stack we should go. So if you wantthe caller of this function, set it to 0 (or omit it). If you want thecaller of the caller of this function, set it to 1. etc.
 
 **Kind**: instance method of [<code>VMUtils</code>](#VMUtils)  
 
@@ -697,22 +595,7 @@ caller of the caller of this function, set it to 1. etc.
 <a name="VMUtils+executionStack"></a>
 
 ### vmUtils.executionStack([start], [end]) ⇒ <code>Array.&lt;Object&gt;</code>
-Returns the currently running stack trace, as an array of objects (see below)
-that describes where in the current execution stack the application
-currently is.
-
-The returned array is comprised of stack entry objects which
-have the following shape:
-
-```
-entry = {
-  entry: string - the full stack trace entry string
-  method: the method name from the stack trace entry
-  source: the filename the method is in
-  line: the line number the execution is on
-  position: the line position the execution is on
-}
-```
+Returns the currently running stack trace, as an array of objects (see below)that describes where in the current execution stack the applicationcurrently is.The returned array is comprised of stack entry objects whichhave the following shape:```entry = {  entry: string - the full stack trace entry string  method: the method name from the stack trace entry  source: the filename the method is in  line: the line number the execution is on  position: the line position the execution is on}```
 
 **Kind**: instance method of [<code>VMUtils</code>](#VMUtils)  
 
