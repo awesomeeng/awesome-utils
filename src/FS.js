@@ -151,7 +151,10 @@ class FSUtils {
 		path = path.replace(/\\\\|\\/g,"/");
 
 		let paths = path.split(/\//g);
+
 		paths.forEach((p,i)=>{
+			if (!p) return;
+
 			let before = paths.slice(0,i).join("/");
 			let filename = (before ? before+"/" : "")+p;
 
