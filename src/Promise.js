@@ -72,6 +72,7 @@ class PromiseUtils {
 
 					let result = f(item,index,array,results);
 					if (result instanceof Promise) result = await result;
+					/* eslint-disable-next-line require-atomic-updates */
 					results[index] = result;
 
 					setImmediate(next);
@@ -95,7 +96,7 @@ class PromiseUtils {
 	 * the passed in promise resolve or reject will be swallowed.
 	 *
 	 * @param  {Promise} promise
-	 * @param  {number} [ttl=30000]           
+	 * @param  {number} [ttl=30000]
 	 * @param  {Error}  [timeoutException=new Error("Timed  out.")]
 	 * @return {Promise}
 	 */

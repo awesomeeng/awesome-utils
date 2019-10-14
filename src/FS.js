@@ -74,6 +74,7 @@ class FSUtils {
 							let files = [];
 							let filename = fileObj.file;
 
+							/* eslint-disable-next-line require-atomic-updates */
 							if (!fileObj.stat) fileObj.stat = await this.stat(fileObj.resolved);
 
 							let isDir = fileObj.stat.isDirectory();
@@ -249,6 +250,7 @@ const _list = function _list(path,filesOnly) {
 						return new Promise(async (resolve,reject)=>{
 							try {
 								let stat = await this.stat(fileObj.resolved);
+								/* eslint-disable-next-line require-atomic-updates */
 								fileObj.stat = stat;
 								let dir = stat.isDirectory();
 								resolve(dir ? null : fileObj);

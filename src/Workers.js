@@ -1,5 +1,7 @@
 // (c) 2018, The Awesome Engineering Company, https://awesomeneg.com
 
+/* global Atomics */
+
 "use strict";
 
 const UNLOCKED = -1;
