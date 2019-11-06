@@ -1,5 +1,9 @@
 # AwesomeUtils Release Notes
 
+#### **Version 1.4.10**
+
+ - Fixes Net.portInUse() to work under node 11 or later.
+
 #### **Version 1.4.9**
 
  - Fixes minor error in FS.recursiveMkdir that would occur when running in linux.
