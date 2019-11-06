@@ -3,6 +3,7 @@
 "use strict";
 
 const Net = require("net");
+const Socket = Net.Socket;
 
 class NetUtils {
 	randomPort() {
@@ -33,27 +34,41 @@ class NetUtils {
 		});
 	}
 
-	portInUse(port,host="127.0.0.1") {
+	portInUse(port,host="127.0.0.1",timeout=250) {
 		return new Promise((resolve,reject)=>{
 			try {
 				let inuse = null;
-				let server = Net.createServer();
-				server.once("listening",()=>{
-					inuse = false;
-					server.close();
-				});
-				server.once("error",()=>{
+				let error = null;
+
+				let socket = new Socket();
+				socket.setTimeout(timeout);
+
+				socket.once("connect",()=>{
 					inuse = true;
-					server.close();
+					socket.destroy();
 				});
-				server.once("close",()=>{
-					resolve(inuse);
+
+				socket.once("timeout",()=>{
+					inuse = false;
+					socket.destroy();
 				});
-				server.listen({
-					host,
-					port,
-					exclusive: true
+
+				socket.once("error",(err)=>{
+					if (err.code === 'ECONNREFUSED') {
+						inuse = false;
+						socket.destroy();
+					}
+					else {
+						error = err;
+					}
 				});
+
+				socket.once("close",()=>{
+					if (error) reject(error);
+					else resolve(inuse);
+				});
+
+				socket.connect(port,host);
 			}
 			catch (ex) {
 				return reject(ex);
