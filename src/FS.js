@@ -151,17 +151,8 @@ class FSUtils {
 
 		path = path.replace(/\\\\|\\/g,"/");
 
-		let paths = path.split(/\//g);
-
-		paths.forEach((p,i)=>{
-			if (!p) return;
-
-			let before = paths.slice(0,i).join("/");
-			let filename = (before ? before+"/" : "")+p;
-
-			let stat = this.statSync(filename);
-			if (!stat) return FS.mkdirSync(filename);
-			if (!stat.isDirectory()) throw new Error("Invalid directory "+filename);
+		FS.mkdirSync(path,{
+			recursive: true
 		});
 	}
 
