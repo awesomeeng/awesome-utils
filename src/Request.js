@@ -37,6 +37,7 @@ class RequestUtils {
 					headers: headers
 				},options||{});
 
+				let done = false;
 				let request = channel.request(url,options,(response)=>{
 					// sets up the content getter.
 					createContentGetter.call(this,response);
@@ -45,10 +46,28 @@ class RequestUtils {
 					// add contentEncoding field.
 					response.contentEncoding = this.parseContentEncoding(response.headers);
 
-					resolve(response);
+					if (!done) {
+						done = true;
+						resolve(response);
+					}
+				});
+				request.once("abort",(err)=>{
+					if (!done) {
+						done = true;
+						reject(err);
+					}
+				});
+				request.once("timeout",(err)=>{
+					if (!done) {
+						done = true;
+						reject(err);
+					}
 				});
 				request.once("error",(err)=>{
-					reject(err);
+					if (!done) {
+						done = true;
+						reject(err);
+					}
 				});
 				if (content) request.write(content);
 				request.end();
