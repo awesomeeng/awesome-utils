@@ -1,16 +1,20 @@
 # AwesomeUtils Release Notes
 
+#### **Version 1.5.0**
+
+ - AwesomeUtils.Request: Adds abort and timeout events cause rejection in requests.
+
 #### **Version 1.4.10**
 
- - Fixes Net.portInUse() to work under node 11 or later.
+ - AwesomeUtils.Net: Fixes Net.portInUse() to work under node 11 or later.
 
 #### **Version 1.4.9**
 
- - Fixes minor error in FS.recursiveMkdir that would occur when running in linux.
+ - AwesomeUtils.FS: Fixes minor error in FS.recursiveMkdir that would occur when running in linux.
 
 #### **Version 1.4.8**
 
- - Adds MimeTypes utilities.
+ - AwesomeUtils.MimeTypes: Adds MimeTypes utilities.
 
 #### **Version 1.4.7**
 
