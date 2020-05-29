@@ -128,6 +128,23 @@ describe("AwesomeUtils.Object",function(){
 				three: 123
 			}
 		});
+
+		// test to make sure get returns the correct type for falsey values.
+		assert.deepStrictEqual(ObjectUtils.get({
+			one: null
+		},"one"),null);
+		assert.deepStrictEqual(ObjectUtils.get({
+			one: undefined
+		},"one"),undefined);
+		assert.deepStrictEqual(ObjectUtils.get({
+			one: 0
+		},"one"),0);
+		assert.deepStrictEqual(ObjectUtils.get({
+			one: ''
+		},"one"),'');
+		assert.deepStrictEqual(ObjectUtils.get({
+			one: false
+		},"one"),false);
 	});
 
 	it("set",function(){

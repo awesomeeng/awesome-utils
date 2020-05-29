@@ -126,8 +126,8 @@ class ObjectUtils {
 	 * @return {*}
 	 */
 	get(obj,path,defaultValue=undefined,delimiter=".") {
-		if (obj==undefined || obj===null) return undefined;
-		if (path=== undefined || path===null || path==="") return obj===undefined ?  defaultValue : obj;
+		if (obj===undefined || obj===null) return obj;
+		if (path===undefined || path===null || path==="") return obj===undefined ?  defaultValue : obj;
 		if (!(path instanceof Array)) path = ""+path;
 		if (typeof path==="string") path = path.split(delimiter);
 
@@ -149,8 +149,8 @@ class ObjectUtils {
 	 * @return {Object}
 	 */
 	set(obj,path,value,delimiter=".") {
-		if (obj==undefined || obj===null) return obj;
-		if (path=== undefined || path===null || path==="") return obj;
+		if (obj===undefined || obj===null) return obj;
+		if (path===undefined || path===null || path==="") return obj;
 		if (!(path instanceof Array)) path = ""+path;
 		if (typeof path==="string") path = path.split(delimiter);
 
