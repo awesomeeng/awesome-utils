@@ -1,5 +1,11 @@
 # AwesomeUtils Release Notes
 
+#### **Version 1.5.1**
+
+ - updated dependencies.
+
+ - Fixes an error where null values would be returned as undefined when using Object.get.
+
 #### **Version 1.5.0**
 
  - AwesomeUtils.Request: Adds abort and timeout events cause rejection in requests.
