@@ -1,5 +1,9 @@
 # AwesomeUtils Release Notes
 
+#### **Version 1.6.0**
+
+ - Adds typescript typings for easier usage.
+
 #### **Version 1.5.1**
 
  - updated dependencies.
