@@ -16,12 +16,6 @@
 <dt><a href="#VMUtils">VMUtils</a></dt>
 <dd><p>Utilities for working with the underlying virtual machine.</p>
 </dd>
-<dt><a href="#Request">Request</a></dt>
-<dd><p>Utility for working with HTTP Requests.</p>
-</dd>
-<dt><a href="#Types">Types</a></dt>
-<dd><p>Types for arguments and response values.</p>
-</dd>
 </dl>
 
 <a name="DateUtils"></a>
@@ -225,10 +219,10 @@ Floor the given date to the nearest day.
 ### dateUtils.from(date) ⇒ <code>Date</code>
 Given some date or date line object, return a Date object.  This allows
 you to quickly move between different types of date like objects.  It
-will parse nubmers as a unix epoch, a string of numbers as a unix epoch,
+will parse numbers as a unix epoch, a string of numbers as a unix epoch,
 JS Date object as a Date Object, or a String as a `Date.parse()` call.
 
-Basically, it does its best to retunr a Date Object or an exception.
+Basically, it does its best to return a Date Object or an exception.
 
 **Kind**: instance method of [<code>DateUtils</code>](#DateUtils)  
 
@@ -441,7 +435,7 @@ Object utility functions.
 
 ### objectUtils.isPlainObject(obj) ⇒ <code>Boolean</code>
 Returns true oif the given object is a "plain" javascript object, meaning it
-doesnt inherit from some other type of js object like an array, date, error, etc.
+doesn't inherit from some other type of js object like an array, date, error, etc.
 
 **Kind**: instance method of [<code>ObjectUtils</code>](#ObjectUtils)  
 
@@ -730,209 +724,3 @@ entry = {
 
 * * *
 
-* * *
-
-<a name="Request"></a>
-
-## Request
-Utility for working with HTTP Requests.
-
-**Kind**: global class  
-
-* [Request](#Request)
-    * [.request(method, url, contentType, content, headers, options)](#Request+request) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.get(url, headers, options)](#Request+get) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.delete(url, headers, options)](#Request+delete) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.head(url, headers, options)](#Request+head) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.trace(url, headers, options)](#Request+trace) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.post(url, contentType, content, headers, options)](#Request+post) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.put(url, contentType, content, headers, options)](#Request+put) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.patch(url, contentType, content, headers, options)](#Request+patch) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.connect(url, contentType, content, headers, options)](#Request+connect) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-    * [.options(url, contentType, content, headers, options)](#Request+options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-
-
-* * *
-
-<a name="Request+request"></a>
-
-### Request.request(method, url, contentType, content, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `request` method used to make a request for any kind of HTTP method.
-
-Optionally, pass only a URL as the first param to default to a GET HTTP request.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `method` | `string` |  | 
-| `url` | `string` |  | 
-| `contentType` | `string` | `null` | 
-| `content` | `any` | `null` | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-### Request.get(url, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `get` method is used to make GET HTTP Requests.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-
-### Request.delete(url, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `delete` method is used to make a DELETE HTTP method.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-### Request.head(url, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `head` method is used to make a HEAD HTTP method.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-### Request.trace(url, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `trace` method is used to make a TRACE HTTP method.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-
-### Request.post(url, contentType, content, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `post` method is used to make a POST HTTP method.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `contentType` | `string` | `null` | 
-| `content` | `any` | `null` | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-### Request.put(url, contentType, content, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `put` method is used to make a PUT HTTP method.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `contentType` | `string` | `null` | 
-| `content` | `any` | `null` | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-
-### Request.patch(url, contentType, content, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `patch` method is used to make a PATCH HTTP method.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `contentType` | `string` | `null` | 
-| `content` | `any` | `null` | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-
-### Request.connect(url, contentType, content, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `connect` method is used to make a CONNECT HTTP method.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `contentType` | `string` | `null` | 
-| `content` | `any` | `null` | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-
-### Request.options(url, contentType, content, headers, options) ⇒ <code>[HttpResponse](#Types+HttpResponse)</code>
-The `options` method is used to make a OPTIONS HTTP method.
-
-**Kind**: instance method of <code>[Request](#Request)</code>
-
-| Param | Type | Default |
-| --- | --- | --- |
-| `url` | `string` |  | 
-| `contentType` | `string` | `null` | 
-| `content` | `any` | `null` | 
-| `headers` | `any` | `{}` | 
-| `options` | `any` | `{}` | 
-
-* * *
-
-* * *
-
-<a name="Types"></a>
-
-## Types
-Types for arguments and response values.
-
-<a name="Types+HttpResponse"></a>
-
-### Types.HttpResponse
-The response object returned when calling any method on [Request](#Request).
-
-```ts
-interface HttpResponse {
-    headers: { [key: string]: string };
-    rawHeaders: string[];
-    statusCode: number;
-    statusMessage: string;
-    content: Promise<any>;
-    contentEncoding: string;
-    contentType: string;
-    complete: boolean;
-    aborted: boolean;
-    httpVersion: string;
-}
-```
-
-| key | Type | Description |
-| --- | --- | --- |
-| `headers` | `{ [key: string]: string }` | Header object with many key-value pairs. |
-| `rawHeaders` | `string[]` | Array of strings |
-| `statusCode` | `number` | Status code of the HTTP request. |
-| `statusMessage` | `string` | Status message (if applicable) for the HTTP request. |
-| `content` | `Promise<any>` | A promise for the content provided from the HTTP request. |
-| `contentEncoding` | `string` | Encoding format of the content. |
-| `aborted` | `boolean` | Denotes whether the HTTP request was aborted. |
-| `complete` | `boolean` | Denotes whether the HTTP request was completed. |
-| `httpVersion` | `string` | Version used for the HTTP request. |
-
-* * *
