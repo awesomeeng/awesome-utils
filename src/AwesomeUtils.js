@@ -1,19 +1,37 @@
+const ANSI = require("./ANSI.js");
+const Array = require("./Array.js");
+const Class = require("./Class.js");
+const Comparator = require("./Comparator.js");
+const Date = require("./Date.js");
+const FS = require("./FS.js");
+const MimeTypes = require("./MimeTypes.js");
+const Module = require("./Module.js");
+const Net = require("./Net.js");
+const Object = require("./Object.js");
+const Parser = require("./Parser.js");
+const Promise = require("./Promise.js");
+const Random = require("./Random.js");
+const Request = require("./Request.js");
+const Sequence = require("./Sequence.js");
+const VM = require("./VM.js");
+const Workers = require("./Workers.js");
+
 module.exports = {
-	ANSI: require("./ANSI.js"),
-	Array: require("./Array.js"),
-	Class: require("./Class.js"),
-	Comparator: require("./Comparator.js"),
-	Date: require("./Date.js"),
-	FS: require("./FS.js"),
-	MimeTypes: require("./MimeTypes.js"),
-	Module: require("./Module.js"),
-	Net: require("./Net.js"),
-	Object: require("./Object.js"),
-	Parser: require("./Parser.js"),
-	Promise: require("./Promise.js"),
-	Random: require("./Random.js"),
-	Request: require("./Request.js"),
-	Sequence: require("./Sequence.js"),
-	VM: require("./VM.js"),
-	Workers: require("./Workers.js")
+	ANSI,
+	Array,
+	Class,
+	Comparator,
+	Date,
+	FS,
+	MimeTypes,
+	Module,
+	Net,
+	Object,
+	Parser,
+	Promise,
+	Random,
+	Request,
+	Sequence,
+	VM,
+	Workers,
 };

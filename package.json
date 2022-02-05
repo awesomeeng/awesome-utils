@@ -1,49 +1,50 @@
 {
-  "name": "@awesomeeng/awesome-utils",
-  "version": "1.5.1",
-  "author": "the awesome engineering company",
-  "license": "MIT",
-  "contributors": [
-    "Glen R. Goodwin"
-  ],
-  "main": "./src/AwesomeUtils.js",
-  "engines": {
-    "node": ">=10.5.0"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "jsdoc-to-markdown": "^5.0.3",
-    "mocha": "^6.2.3"
-  },
-  "optionalDependencies": {},
-  "scripts": {
-    "lint": "eslint src test",
-    "docs": "jsdoc2md src/** --separators > docs/API.md",
-    "test": "mocha test",
-    "tests": "mocha test"
-  },
-  "description": "Javascript Utility functions for enterprise nodejs applications.",
-  "directories": {
-    "doc": "docs",
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/awesomeeng/awesome-utils.git"
-  },
-  "keywords": [
-    "awesome",
-    "awesomeeng",
-    "awesome",
-    "engineering",
-    "utilities",
-    "utility",
-    "utils",
-    "util"
-  ],
-  "bugs": {
-    "url": "https://github.com/awesomeeng/awesome-utils/issues"
-  },
-  "homepage": "https://github.com/awesomeeng/awesome-utils#readme"
+	"name": "@awesomeeng/awesome-utils",
+	"version": "1.5.1",
+	"author": "the awesome engineering company",
+	"license": "MIT",
+	"contributors": [
+		"Glen R. Goodwin"
+	],
+	"main": "./src/AwesomeUtils.js",
+	"types": "./types/AwesomeUtils.d.ts",
+	"engines": {
+		"node": ">=10.5.0"
+	},
+	"devDependencies": {
+		"eslint": "^8.8.0",
+		"jsdoc-to-markdown": "^7.1.1",
+		"mocha": "^9.2.0",
+		"typescript": "^4.5.5"
+	},
+	"scripts": {
+		"build": "tsc",
+    	"lint": "eslint src test",
+		"docs": "jsdoc2md src/** --separators > docs/API.md",
+		"test": "mocha test",
+		"tests": "mocha test"
+	},
+	"description": "Javascript Utility functions for enterprise nodejs applications.",
+	"directories": {
+		"doc": "docs",
+		"test": "test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/awesomeeng/awesome-utils.git"
+	},
+	"keywords": [
+		"awesome",
+		"awesomeeng",
+		"awesome",
+		"engineering",
+		"utilities",
+		"utility",
+		"utils",
+		"util"
+	],
+	"bugs": {
+		"url": "https://github.com/awesomeeng/awesome-utils/issues"
+	},
+	"homepage": "https://github.com/awesomeeng/awesome-utils#readme"
 }

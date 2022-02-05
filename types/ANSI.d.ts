@@ -1,0 +1,47 @@
+declare const _exports: ANSIUtils;
+export = _exports;
+declare class ANSIUtils {
+    reset(s?: string): string;
+    bold(s?: string): string;
+    faint(s?: string): string;
+    italic(s?: string): string;
+    underline(s?: string): string;
+    blink(s?: string): string;
+    reverse(s?: string): string;
+    strike(s?: string): string;
+    bgBlack(s?: string): string;
+    bgRed(s?: string): string;
+    bgGreen(s?: string): string;
+    bgYellow(s?: string): string;
+    bgBlue(s?: string): string;
+    bgMagenta(s?: string): string;
+    bgCyan(s?: string): string;
+    bgWhite(s?: string): string;
+    bgBrightBlack(s?: string): string;
+    bgBrightRed(s?: string): string;
+    bgBrightGreen(s?: string): string;
+    bgBrightYellow(s?: string): string;
+    bgBrightBlue(s?: string): string;
+    bgBrightMagenta(s?: string): string;
+    bgBrightCyan(s?: string): string;
+    bgBrightWhite(s?: string): string;
+    fgBlack(s?: string): string;
+    fgRed(s?: string): string;
+    fgGreen(s?: string): string;
+    fgYellow(s?: string): string;
+    fgBlue(s?: string): string;
+    fgMagenta(s?: string): string;
+    fgCyan(s?: string): string;
+    fgWhite(s?: string): string;
+    fgBrightBlack(s?: string): string;
+    fgBrightRed(s?: string): string;
+    fgBrightGreen(s?: string): string;
+    fgBrightYellow(s?: string): string;
+    fgBrightBlue(s?: string): string;
+    fgBrightMagenta(s?: string): string;
+    fgBrightCyan(s?: string): string;
+    fgBrightWhite(s?: string): string;
+    stylize(style?: string, s?: string): any;
+    mapStyle(style: any): (s?: string) => string;
+}
+//# sourceMappingURL=ANSI.d.ts.map

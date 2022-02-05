@@ -11,7 +11,7 @@ const assert = require("assert");
 class ObjectUtils {
 	/**
 	 * Returns true oif the given object is a "plain" javascript object, meaning it
-	 * doesnt inherit from some other type of js object like an array, date, error, etc.
+	 * doesn't inherit from some other type of js object like an array, date, error, etc.
 	 *
 	 * @param  {Object}  obj
 	 * @return {Boolean}

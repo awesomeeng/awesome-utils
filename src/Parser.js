@@ -9,6 +9,10 @@ class ParserUtils {
 	constructor() {
 	}
 
+	// We do this so typescript can get the typings.
+	/**
+	 * @type Class
+	 */
 	get AbstractParser() {
 		return AbstractParser;
 	}
@@ -70,7 +74,7 @@ class AbstractParser {
 	}
 
 	set pos(n) {
-		return this.position = n;
+		this.position = n;
 	}
 
 	get index() {
@@ -78,7 +82,7 @@ class AbstractParser {
 	}
 
 	set index(n) {
-		return this.position = n;
+		this.position = n;
 	}
 
 	isSpace(c) {

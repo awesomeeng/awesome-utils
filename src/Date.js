@@ -153,10 +153,10 @@ class DateUtils {
 	/**
 	 * Given some date or date line object, return a Date object.  This allows
 	 * you to quickly move between different types of date like objects.  It
-	 * will parse nubmers as a unix epoch, a string of numbers as a unix epoch,
+	 * will parse numbers as a unix epoch, a string of numbers as a unix epoch,
  	 * JS Date object as a Date Object, or a String as a `Date.parse()` call.
  	 *
- 	 * Basically, it does its best to retunr a Date Object or an exception.
+ 	 * Basically, it does its best to return a Date Object or an exception.
  	 *
 	 * @param  {Date|number|string}
 	 * @return {Date}
